@@ -17,26 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        theme: "simple",
-        elements: {
-          headerTitle: {
-            fontSize: "32px",
-          },
-          formButtonPrimary: {
-            backgroundColor: "red",
-            color: "white",
-            borderColor: "#a80000ff",
-            fontSize: "18px",
-          },
-          formButtonPrimary_hover: {
-            backgroundColor: "#c20000ff",
-            borderColor: "#c20000ff",
-          }
-        }
-      }}
-    >
+    <ClerkProvider>
       <html lang="en">
         <body 
         >

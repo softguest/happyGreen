@@ -39,9 +39,8 @@ export function QuickActions() {
       <div
         className="
           -mx-4 px-4
-          flex gap-3 overflow-x-auto
-          sm:mx-0 sm:px-0
-          sm:grid sm:grid-cols-2
+          gap-3 grid
+          grid-cols-2
           lg:grid-cols-4
           scrollbar-hide
         "

@@ -1,145 +1,177 @@
-import { pgTable, pgEnum,uuid, varchar, timestamp, integer, numeric, text, decimal } from "drizzle-orm/pg-core";
-// import { users } from "./users";
-import { relations } from "drizzle-orm";
-
-const kycStatusEnum = pgEnum("kyc_status", ["pending", "approved", "rejected"]);
-export const UserRoleEnum = pgEnum("user_role", ["user", "admin"]);
-
+// db/schema/users.ts
+import { pgTable, text, timestamp,integer, uuid, boolean } from "drizzle-orm/pg-core";
+// import { skills } from "./skills";
 export const users = pgTable("users", {
-  id: text("id").primaryKey(),                // Clerk userId
-  clerkId: varchar("clerk_id").notNull().unique(),
-  email: varchar("email").notNull(),
-  fullName: varchar("full_name").notNull(),
-  phone: varchar("phone").notNull(),
+  id: uuid("id").defaultRandom().primaryKey(),
 
-  kycStatus: varchar("kyc_status", { length: 20 }).default("pending").notNull(), // pending/approved/rejected
-  kycFront: text("kyc_front"),  // Cloudinary URL
-  kycBack: text("kyc_back"),
+  clerkUserId: text("clerk_user_id").notNull().unique(),
 
-  status: varchar("status", { length: 20 }).default("pending").notNull(),
+  fullName: text("full_name"),
+  email: text("email"),
 
-  // ✅ Role column using enum
-  role: varchar("role", { length: 30 }).default("user"), // puser/admin
+  region: text("region"), // e.g. "Centre", "Littoral"
+  interests: text("interests").array(), // ["agriculture", "waste"]
 
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const kyc = pgTable("kyc", {
+// db/schema/skills.ts
+export const skills = pgTable("skills", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: text("user_id").notNull(), 
-  idDocumentUrl: text("id_document_url"),
-  addressProofUrl: text("address_proof_url"),
-  submittedAt: timestamp("submitted_at").defaultNow(),
 
-  // New fields for review/approval
-  reviewedAt: timestamp("reviewed_at"),       // when admin reviewed
-  reviewedBy: text("reviewed_by"),            // admin user id
-  status: varchar("status", { length: 20 }).default("pending"), // pending/approved/rejected
-  rejectionReason: text("rejection_reason"),  // optional reason for rejection
-});
+  title: text("title").notNull(),
+  description: text("description").notNull(),
 
-export const accounts = pgTable("accounts", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  userId: text("user_id").notNull(),
-  name: varchar("name", { length: 255 }).notNull(),
-  type: varchar("type", { length: 50 }).notNull(),
-  balance: numeric("balance", { precision: 12, scale: 2 }).default("0"),
-  accountNumber: varchar("account_number", { length: 20 }).notNull().unique(),
+  category: text("category").notNull(), 
+  // agriculture | waste | energy | water
+
+  duration: text("duration"), // "2–3 weeks"
+  tools: text("tools").array(), // ["gloves", "bags"]
+
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const targetGoals = pgTable("target_goals", {
+// db/schema/modules.ts
+export const modules = pgTable("modules", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: text("user_id").notNull(), 
-  accountId: uuid("account_id").references(() => accounts.id).notNull(),
-  name: varchar("name", { length: 100 }).notNull(),
-  targetAmount: numeric("target_amount", { precision: 12, scale: 2 }).notNull(),
-  deadline: timestamp("deadline"),
-  createdAt: timestamp("created_at").defaultNow(),
+
+  skillId: uuid("skill_id")
+    .references(() => skills.id)
+    .notNull(),
+
+  title: text("title").notNull(),
+  content: text("content"), // short lesson text
+
+  order: integer("order").notNull(),
 });
 
-export const groups = pgTable("groups", {
+export const userSkills = pgTable("user_skills", {
   id: uuid("id").defaultRandom().primaryKey(),
-  name: text("name").notNull(),
+
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+
+  skillId: uuid("skill_id")
+    .references(() => skills.id)
+    .notNull(),
+
+  completed: boolean("completed").default(false),
+
+  startedAt: timestamp("started_at").defaultNow(),
+  completedAt: timestamp("completed_at"),
+});
+
+export const skillLevels = pgTable("skill_levels", {
+  id: uuid("id").defaultRandom().primaryKey(),
+
+  skillId: uuid("skill_id")
+    .references(() => skills.id)
+    .notNull(),
+
+  level: text("level").notNull(), 
+  // Beginner | Intermediate | Advanced
+
+  order: integer("order").notNull(), // 1,2,3
+
+  outcome: text("outcome"), // What learner can do after this level
+});
+
+export const learningSteps = pgTable("learning_steps", {
+  id: uuid("id").defaultRandom().primaryKey(),
+
+  skillLevelId: uuid("skill_level_id")
+    .references(() => skillLevels.id)
+    .notNull(),
+
+  title: text("title").notNull(), // "Learn HTML basics"
   description: text("description"),
-  userId: text("user_id").notNull(), // admin
-  goalAmount: numeric("goal_amount", { precision: 12, scale: 2 }).notNull(),
-  contributionAmount: numeric("contribution_amount", {
-    precision: 12,
-    scale: 2,
-  }).notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+
+  order: integer("order").notNull(),
 });
 
-
-// GROUP MEMBERS
-export const groupMembers = pgTable("group_members", {
+export const resources = pgTable("resources", {
   id: uuid("id").defaultRandom().primaryKey(),
-  groupId: uuid("group_id").notNull(),
-  userId: text("user_id").notNull(), 
-  expectedAmount: decimal("expected_amount", { precision: 10, scale: 2 }),
-  joinedAt: timestamp("joined_at").defaultNow(),
+
+  stepId: uuid("step_id")
+    .references(() => learningSteps.id)
+    .notNull(),
+
+  title: text("title"),
+  url: text("url"),
+  type: text("type"), // video | article | course
 });
 
-// CONTRIBUTIONS
-export const contributions = pgTable("contributions", {
+export const userProgress = pgTable("user_progress", {
   id: uuid("id").defaultRandom().primaryKey(),
-  groupId: uuid("group_id").notNull(),
-  userId: text("user_id").notNull(), 
-  accountId: uuid("account_id").notNull(), // ✅ NEW
-  amount: numeric("amount", { precision: 12, scale: 2 }).notNull(),
+
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+
+  stepId: uuid("step_id")
+    .references(() => learningSteps.id)
+    .notNull(),
+
+  completed: boolean("completed").default(false),
+  completedAt: timestamp("completed_at"),
+});
+
+export const userModules = pgTable("user_modules", {
+  id: uuid("id").defaultRandom().primaryKey(),
+
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+
+  moduleId: uuid("module_id")
+    .references(() => modules.id)
+    .notNull(),
+
+  completed: boolean("completed").default(false),
+  completedAt: timestamp("completed_at"),
+});
+
+export const impact = pgTable("impact", {
+  id: uuid("id").defaultRandom().primaryKey(),
+
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+
+  skillsCompleted: integer("skills_completed").default(0),
+  estimatedIncome: text("estimated_income"), // "50,000 – 100,000 FCFA"
+  environmentalImpact: text("environmental_impact"), 
+  // e.g. "Reduced plastic waste by ~20kg"
+
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const businessPlans = pgTable("business_plans", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id").notNull(),
+  skillId: uuid("skill_id").notNull(),
+
+  idea: text("idea"),
+  startupCost: text("startup_cost"),
+  targetCustomers: text("target_customers"),
+
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// --------------------------
-// USER WALLET
-// --------------------------
-export const wallets = pgTable("wallets", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  userId: text("user_id").notNull().references(() => users.id), 
-  balance: integer("balance").default(0),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-// --------------------------
-// TRANSACTIONS
-// --------------------------
-export const transactions = pgTable("transactions", {
+export const interests = pgTable("interests", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: text("user_id").notNull().references(() => users.id),
-  account_id: uuid("account_id"),
-  amount: integer("amount").notNull(),
-  type: varchar("type", { length: 50 }).notNull(), // deposit/withdrawal/transfer
-  status: varchar("status", { length: 50 }).notNull().default("initiated"),
-  phone_number: varchar("phone_number", { length: 32 }),
-  fromAccountId: uuid("from_account_id"),
-  toAccountId: uuid("to_account_id"),
-  narration: text("narration"),
-  momo_response: text("momo_response"),
-  momoReference: varchar("momo_reference"),
-  created_at: timestamp("created_at").defaultNow().notNull(),
-  updated_at: timestamp("updated_at").defaultNow().notNull(),
+  name: text("name").notNull().unique(), // e.g. "Web Development"
 });
 
-// --------------------------
-// MOMO REQUEST LOG
-// --------------------------
-export const momoLogs = pgTable("momo_logs", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  userId: text("user_id").notNull(), 
-  externalId: varchar("external_id").notNull(),
-  phone: varchar("phone").notNull(),
-  amount: integer("amount").notNull(),
-  status: varchar("status").default("pending"),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
-export const withdrawals = pgTable("withdrawals", {
+export const userInterests = pgTable("user_interests", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: text("user_id").notNull(),
-  accountId: uuid("account_id").notNull(),
-  phone: varchar("phone", { length: 20 }).notNull(),
-  amount: integer("amount").notNull(),
-  status: varchar("status", { length: 20 }).default("pending"),
-  createdAt: timestamp("created_at").defaultNow(),
+
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+
+  interestId: uuid("interest_id")
+    .references(() => interests.id)
+    .notNull(),
 });
