@@ -29,7 +29,7 @@ export function WelcomeCard({ profile }: Props) {
   };
 
   return (
-    <Card className="gradient-green border-0 text-white overflow-hidden relative">
+    <Card className="bg-green-800  gradient-green border-0 text-white overflow-hidden relative">
       <CardContent className="p-6 md:p-8">
         <div className="relative z-10">
           <p className="text-green-200 text-sm">{greeting()},</p>

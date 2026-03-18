@@ -227,7 +227,8 @@ export function PlanPDFExport({ plan, skillName }: Props) {
       }
 
       // ===== FOOTER =====
-      const totalPages = doc.internal.getNumberOfPages();
+      // const totalPages = doc.internal.getNumberOfPages();
+      const totalPages = (doc as any).getNumberOfPages();
       for (let i = 1; i <= totalPages; i++) {
         doc.setPage(i);
         doc.setFontSize(7);
