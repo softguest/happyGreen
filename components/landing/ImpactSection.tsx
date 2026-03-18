@@ -1,87 +1,93 @@
-import { Users, GraduationCap, DollarSign, TreeDeciduous } from "lucide-react";
+// src/components/landing/ImpactSection.tsx
+import {
+  Trash2,
+  TreePine,
+  Zap,
+  Droplets,
+  Users,
+  Globe,
+} from "lucide-react";
 
-const stats = [
-  {
-    icon: Users,
-    value: "50K+",
-    label: "Youth Trained",
-    description: "Young people empowered with green skills",
-  },
-  {
-    icon: GraduationCap,
-    value: "120+",
-    label: "Courses",
-    description: "AI-curated learning paths",
-  },
-  {
-    icon: DollarSign,
-    value: "$2M+",
-    label: "Income Generated",
-    description: "Earned by our graduates",
-  },
-  {
-    icon: TreeDeciduous,
-    value: "100K",
-    label: "Tons CO₂ Saved",
-    description: "Through green initiatives",
-  },
+const IMPACT_STATS = [
+  { icon: Trash2, value: "Waste Reduced", unit: "kg tracked", color: "text-amber-600", bg: "bg-amber-100" },
+  { icon: TreePine, value: "Trees Planted", unit: "seedlings tracked", color: "text-green-600", bg: "bg-green-100" },
+  { icon: Zap, value: "Energy Saved", unit: "kWh tracked", color: "text-yellow-600", bg: "bg-yellow-100" },
+  { icon: Droplets, value: "Water Conserved", unit: "liters tracked", color: "text-blue-600", bg: "bg-blue-100" },
 ];
 
-export const ImpactSection = () => {
+export function ImpactSection() {
   return (
-    <section className="py-20 lg:py-32 bg-gradient-hero relative overflow-hidden">
-      {/* Background pattern */}
+    <section id="impact" className="py-20 md:py-28 bg-green-800 relative overflow-hidden">
+      {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }} />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-green-400 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gold-400 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-main relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-semibold text-accent uppercase tracking-wider mb-4">
-            Our Impact
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Making a Real Difference
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+            Track Your Real-World Impact
           </h2>
-          <p className="text-lg text-primary-foreground/80">
-            Together, we're building a sustainable future — one skill at a time.
+          <p className="mt-4 text-lg text-green-200">
+            Every action counts. GreenSkill Hub helps you measure and visualize
+            the environmental difference you&apos;re making.
           </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="group relative bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-8 text-center hover:bg-primary-foreground/15 transition-all duration-500"
-            >
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent/20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                <stat.icon className="w-8 h-8 text-accent" />
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {IMPACT_STATS.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-colors"
+              >
+                <div
+                  className={`w-14 h-14 ${stat.bg} rounded-2xl flex items-center justify-center mx-auto mb-4`}
+                >
+                  <Icon className={`w-7 h-7 ${stat.color}`} />
+                </div>
+                <p className="text-lg font-heading font-bold text-white">
+                  {stat.value}
+                </p>
+                <p className="text-sm text-green-300 mt-1">{stat.unit}</p>
               </div>
+            );
+          })}
+        </div>
 
-              {/* Value */}
-              <div className="text-4xl lg:text-5xl font-extrabold text-primary-foreground mb-2">
-                {stat.value}
-              </div>
-
-              {/* Label */}
-              <div className="text-lg font-semibold text-primary-foreground mb-2">
-                {stat.label}
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-primary-foreground/60">
-                {stat.description}
-              </p>
+        {/* Community Stats */}
+        <div className="mt-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Globe className="w-6 h-6 text-gold-400" />
+            <h3 className="text-xl font-heading font-bold text-white">
+              Join the Green Community
+            </h3>
+          </div>
+          <p className="text-green-200 max-w-2xl mx-auto">
+            Connect with other young Cameroonians building green skills. Share
+            tips, collaborate on projects, and climb the impact leaderboard in
+            your region. Together, we&apos;re building a climate-resilient future.
+          </p>
+          <div className="flex items-center justify-center gap-8 mt-6">
+            <div>
+              <p className="text-2xl font-bold text-white">10</p>
+              <p className="text-xs text-green-300">Regions</p>
             </div>
-          ))}
+            <div className="w-px h-10 bg-green-600" />
+            <div>
+              <p className="text-2xl font-bold text-white">13+</p>
+              <p className="text-xs text-green-300">Green Skills</p>
+            </div>
+            <div className="w-px h-10 bg-green-600" />
+            <div>
+              <p className="text-2xl font-bold text-white">5</p>
+              <p className="text-xs text-green-300">Impact Areas</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-};
+}

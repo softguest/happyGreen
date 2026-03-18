@@ -1,104 +1,86 @@
-import { UserPlus, Brain, Briefcase, TrendingUp } from "lucide-react";
+// src/components/landing/HowItWorksSection.tsx
+import { UserPlus, Brain, BookOpen, Rocket } from "lucide-react";
 
-const steps = [
+const STEPS = [
   {
-    number: "01",
     icon: UserPlus,
-    title: "Sign Up",
-    description: "Create your free account and complete a quick skills assessment.",
+    step: "01",
+    title: "Create Your Profile",
+    description:
+      "Sign up for free and tell us about your location, interests, and available resources. Takes less than 2 minutes.",
+    color: "bg-blue-600",
   },
   {
-    number: "02",
     icon: Brain,
-    title: "AI Matching",
-    description: "Our AI analyzes your profile and matches you with relevant green skills.",
+    step: "02",
+    title: "Get AI Recommendations",
+    description:
+      "Our AI analyzes your profile and local climate conditions to suggest the most relevant green skills for you.",
+    color: "bg-green-600",
   },
   {
-    number: "03",
-    icon: Briefcase,
-    title: "Learn & Build",
-    description: "Access interactive courses, mentorship, and hands-on projects.",
+    icon: BookOpen,
+    step: "03",
+    title: "Learn & Practice",
+    description:
+      "Follow practical micro-learning pathways with hands-on tasks. Complete quizzes and earn certificates.",
+    color: "bg-purple-600",
   },
   {
-    number: "04",
-    icon: TrendingUp,
-    title: "Earn & Grow",
-    description: "Launch your green business or land jobs in the sustainable economy.",
+    icon: Rocket,
+    step: "04",
+    title: "Launch Your Green Business",
+    description:
+      "Use the AI business planner to turn your skills into income. Track your environmental impact as you grow.",
+    color: "bg-gold-600",
   },
 ];
 
-export const HowItWorksSection = () => {
+export function HowItWorksSection() {
   return (
-    <section className="py-20 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-30">
-        <div className="absolute top-20 -left-20 w-72 h-72 bg-green-light rounded-full blur-3xl" />
-        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-secondary rounded-full blur-3xl" />
-      </div>
-
-      <div className="container-main relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-            Simple Process
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+    <section id="how-it-works" className="py-20 md:py-28 bg-cream">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
             How It Works
           </h2>
-          <p className="text-lg text-muted-foreground">
-            From sign-up to earning income in the green economy — in four simple steps.
+          <p className="mt-4 text-lg text-gray-600">
+            Four simple steps from discovering skills to earning income
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-26 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {steps.map((step, index) => (
-              <div
-                key={step.number}
-                className="relative group cursor-pointer"
-              >
-                {/* Step Card */}
-                <div className="bg-card rounded-2xl p-6 lg:p-8 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-2 border border-border/50 h-full">
-                  {/* Number Badge */}
-                  <div className="relative mb-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg shadow-soft group-hover:scale-110 transition-transform duration-300">
-                      {step.number}
-                    </div>
-                    {/* Pulse effect */}
-                    <div className="absolute inset-0 w-12 h-12 rounded-full bg-primary/30 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondary mb-4">
-                    <step.icon className="w-7 h-7 text-primary" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Arrow - Mobile */}
-                {index < steps.length - 1 && (
-                  <div className="hidden sm:block lg:hidden absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 text-primary/30">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 5v14M5 12l7 7 7-7" />
-                    </svg>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {STEPS.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={i} className="relative text-center">
+                {/* Connector */}
+                {i < STEPS.length - 1 && (
+                  <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gray-200">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-gray-300 rounded-full" />
                   </div>
                 )}
+
+                <div
+                  className={`w-20 h-20 ${step.color} rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-lg`}
+                >
+                  <Icon className="w-9 h-9 text-white" />
+                </div>
+
+                <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">
+                  Step {step.step}
+                </span>
+                <h3 className="text-lg font-heading font-bold text-gray-900 mt-2">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
+                  {step.description}
+                </p>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
+}

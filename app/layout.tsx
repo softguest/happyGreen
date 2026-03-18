@@ -5,11 +5,49 @@ import {
 import './globals.css'
 import Provider from "@/provider";
 import { Toaster } from "react-hot-toast";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+});
 
 export const metadata: Metadata = {
-  title: 'HappiGreen',
-  description: 'Build Skills, Save the Planet',
-}
+  title: "GreenSkill Hub — AI-Powered Green Skills for Cameroon",
+  description:
+    "Discover green skills, learn practical techniques, and launch sustainable businesses with AI-powered guidance. Built for Cameroonian youths.",
+  keywords: [
+    "green skills",
+    "Cameroon",
+    "climate change",
+    "entrepreneurship",
+    "sustainable agriculture",
+    "waste management",
+    "renewable energy",
+    "youth employment",
+  ],
+  openGraph: {
+    title: "GreenSkill Hub — Turn Green Skills Into Livelihoods",
+    description:
+      "AI-powered platform helping Cameroonian youths discover climate-smart skills and build sustainable businesses.",
+    type: "website",
+    locale: "en_CM",
+    siteName: "GreenSkill Hub",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GreenSkill Hub — AI-Powered Green Skills for Cameroon",
+    description:
+      "Discover green skills, learn practical techniques, and launch sustainable businesses.",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -18,8 +56,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body 
+      <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+        <body className="font-sans antialiased"
         >
           <Provider>
             <div>

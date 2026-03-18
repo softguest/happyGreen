@@ -1,0 +1,124 @@
+// import { streamText, convertToModelMessages, ModelMessage } from "ai";
+// import { geminiModel } from "@/lib/ai/gemini";
+// import {
+// buildAdvisorSystemPrompt,
+// buildRecommendationPrompt,
+// } from "@/lib/ai/prompts";
+// import { auth } from "@clerk/nextjs/server";
+// import { db } from "@/config/db";
+// import { userProfiles, userSkills, greenSkills } from "@/config/schema";
+// import { eq } from "drizzle-orm";
+// import { CAMEROON_REGIONS } from "@/lib/constants";
+
+// export async function POST(req: Request) {
+// try {
+// // ✅ Auth
+// const { userId } = await auth();
+// if (!userId) {
+// return new Response("Unauthorized", { status: 401 });
+// }
+
+// // ✅ Parse request safely
+// const body = await req.json();
+// const messages = Array.isArray(body.messages) ? body.messages : [];
+// const mode = body.mode || "chat";
+
+// // ✅ Get user profile (with fallback)
+// let profile: any = null;
+
+// try {
+//   const profiles = await db
+//     .select()
+//     .from(userProfiles)
+//     .where(eq(userProfiles.clerkId, userId))
+//     .limit(1);
+
+//   profile = profiles[0];
+// } catch (error) {
+//   console.error("DB profile fetch failed:", error);
+// }
+
+// // ✅ Fallback profile (prevents crash)
+// if (!profile) {
+//   profile = {
+//     id: "unknown",
+//     fullName: "User",
+//     region: "cameroon",
+//     city: "",
+//     currentSituation: "unknown",
+//     interests: [],
+//     availableResources: [],
+//   };
+// }
+
+// // ✅ Get user's saved skills (safe)
+// let existingSkillNames: string[] = [];
+
+// try {
+//   if (profile.id !== "unknown") {
+//     const savedSkills = await db
+//       .select({ name: greenSkills.name })
+//       .from(userSkills)
+//       .innerJoin(greenSkills, eq(userSkills.skillId, greenSkills.id))
+//       .where(eq(userSkills.userId, profile.id));
+
+//     existingSkillNames = savedSkills.map((s) => s.name);
+//   }
+// } catch (error) {
+//   console.error("DB skills fetch failed:", error);
+// }
+
+// // ✅ Region + climate
+// const regionInfo = CAMEROON_REGIONS.find(
+//   (r) => r.value === profile.region
+// );
+
+// const climateZone = regionInfo?.climateZone || "equatorial";
+// const regionLabel = regionInfo?.label || profile.region || "Cameroon";
+
+// // ✅ Build user context
+// const userContext = {
+//   fullName: profile.fullName,
+//   region: regionLabel,
+//   city: profile.city || "",
+//   climateZone,
+//   currentSituation: profile.currentSituation || "unknown",
+//   interests: (profile.interests as string[]) || [],
+//   availableResources: (profile.availableResources as string[]) || [],
+//   existingSkills: existingSkillNames,
+// };
+
+// // ✅ System prompt
+// const systemPrompt = buildAdvisorSystemPrompt(userContext);
+
+// // ✅ Convert messages (CRITICAL FIX)
+// // let finalMessages = convertToModelMessages(messages);
+// let finalMessages: ModelMessage[] = convertToModelMessages(messages);
+
+// // ✅ Recommendation mode override
+// if (mode === "recommend") {
+//   const recPrompt = buildRecommendationPrompt(userContext);
+
+//   finalMessages = [
+//     {
+//       role: "user",
+//       content: recPrompt,
+//     },
+//   ];
+// }
+
+// // ✅ Stream AI response
+// const result = streamText({
+//   model: geminiModel,
+//   system: systemPrompt,
+//   messages: finalMessages,
+//   temperature: 0.7,
+// });
+
+// return result.toTextStreamResponse();
+
+// } catch (error) {
+// console.error("AI Advisor error:", error);
+// return new Response("AI service error", { status: 500 });
+// }
+// }

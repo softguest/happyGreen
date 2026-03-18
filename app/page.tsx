@@ -1,25 +1,15 @@
-import { Navbar } from "@/components/landing/Navbar";
-import { HeroSection } from "@/components/landing/HeroSection";
-import { ProblemSolutionSection } from "@/components/landing/ProblemSolutionSection";
-import { HowItWorksSection } from "@/components/landing/HowItWorksSection";
-import { ImpactSection } from "@/components/landing/ImpactSection";
-import { CTASection } from "@/components/landing/CTASection";
-import { Footer } from "@/components/landing/Footer";
+// src/app/page.tsx
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { LandingPage } from "@/components/landing/LandingPage";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <ProblemSolutionSection />
-        <HowItWorksSection />
-        <ImpactSection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+export default async function HomePage() {
+  const { userId } = await auth();
 
-export default Index;
+  // If already signed in, redirect to dashboard
+  if (userId) {
+    redirect("/dashboard");
+  }
+
+  return <LandingPage />;
+}

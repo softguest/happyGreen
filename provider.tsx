@@ -7,7 +7,7 @@ import { UserDetailContext } from './context/UserDetailContext';
 export type UsersDetail = {
     name: string;
     email: string;
-    credits: number;
+    fullName: string;
 }; 
 
 function Provider ({

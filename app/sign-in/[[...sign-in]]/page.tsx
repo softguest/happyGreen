@@ -1,199 +1,38 @@
-// "use client";
+// src/app/sign-in/[[...sign-in]]/page.tsx
+import { SignIn } from "@clerk/nextjs";
+import { Leaf } from "lucide-react";
 
-// import { useState, useEffect } from "react";
-// import { useSignIn, useSignUp } from "@clerk/nextjs";
-// import { motion } from "framer-motion";
-// import { Canvas } from "@react-three/fiber";
-// import { Float, Stars } from "@react-three/drei";
-
-// function ThreeBackground() {
-//   return (
-//     <Canvas className="absolute inset-0 -z-10">
-//       <ambientLight intensity={0.6} />
-//       <directionalLight position={[5, 5, 5]} intensity={1} />
-//       <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
-//         <Stars radius={50} depth={50} count={2000} factor={4} saturation={0} fade />
-//       </Float>
-//     </Canvas>
-//   );
-// }
-
-// export default function AuthPage() {
-//   const [mode, setMode] = useState<"login" | "signup" | "verify">("login");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [code, setCode] = useState("");
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState<string | null>(null);
-
-//   const { signIn, setActive: setActiveSignIn } = useSignIn();
-//   const { signUp, setActive: setActiveSignUp } = useSignUp();
-
-//   const handleGoogle = async () => {
-//     if (!signIn) return;
-//     await signIn.authenticateWithRedirect({
-//       strategy: "oauth_google",
-//       redirectUrl: "/sso-callback",
-//       redirectUrlComplete: "/dashboard",
-//     });
-//   };
-
-//   const handleSubmit = async () => {
-//     setLoading(true);
-//     setError(null);
-
-//     try {
-//       if (mode === "login") {
-//         const res = await signIn?.create({ identifier: email, password });
-//         if (res?.status === "complete") {
-//           // setActiveSignIn may be undefined depending on the Clerk hook return type,
-//           // so guard the call with optional chaining to avoid invoking undefined.
-//           await setActiveSignIn?.({ session: res.createdSessionId });
-//           location.href = "/dashboard";
-//         }
-//       }
-
-//       if (mode === "signup") {
-//         const res = await signUp?.create({ emailAddress: email, password });
-//         await signUp?.prepareEmailAddressVerification({ strategy: "email_code" });
-//         setMode("verify");
-//       }
-
-//       if (mode === "verify") {
-//         const res = await signUp?.attemptEmailAddressVerification({ code });
-//         if (res?.status === "complete") {
-//           await setActiveSignUp?.({ session: res.createdSessionId });
-//           location.href = "/dashboard";
-//         }
-//       }
-//     } catch (err: any) {
-//       setError(err?.errors?.[0]?.message || "Authentication failed");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="relative min-h-screen bg-gradient-to-br from-white via-slate-100 to-red-200 text-slate-900 overflow-hidden">
-//       {/* <ThreeBackground /> */}
-//       <div className="flex grid grid-cols-1 md:grid-cols-2 min-h-screen">
-//         <div className="hidden md:flex items-center justify-center bg-red-600 text-white p-10 space-x-2">
-//           {/* Right side can be used for additional graphics or left empty */}
-//           <div className="h-8 w-8 bg-white rounded-full mb-4" />
-//           <h1 className="text-4xl font-extrabold mb-4">TrustFund</h1>
-//         </div>
-//         <div className="">
-//           <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
-//             <motion.div
-//               initial={{ opacity: 0, y: 40 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.8 }}
-//               className="w-full max-w-md rounded-3xl border border-white/60 bg-white/70 backdrop-blur-xl p-8 shadow-2xl"
-//             >
-//               <div className="mb-8 text-center">
-//                 <h1 className="text-3xl font-bold">
-//                   {mode === "login" && "Welcome Back"}
-//                   {mode === "signup" && "Create Account with"}
-//                   {mode === "verify" && "Verify Email"}
-//                 </h1>
-//                 <h1 className="text-2xl font-bold text-red-600">TrustFund</h1>
-//                 <p className="mt-2 text-sm text-slate-600">
-//                   {mode === "verify"
-//                     ? "Enter the verification code sent to your email"
-//                     : "Secure access to your dashboard"}
-//                 </p>
-//               </div>
-
-//               <div className="space-y-4">
-//                 {mode !== "verify" && (
-//                   <input
-//                     type="email"
-//                     placeholder="Email address"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                     className="w-full rounded-xl border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-400"
-//                   />
-//                 )}
-
-//                 {mode !== "verify" && (
-//                   <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={(e) => setPassword(e.target.value)}
-//                     className="w-full rounded-xl border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-400"
-//                   />
-//                 )}
-
-//                 {mode === "verify" && (
-//                   <input
-//                     type="text"
-//                     placeholder="Verification code"
-//                     value={code}
-//                     onChange={(e) => setCode(e.target.value)}
-//                     className="w-full rounded-xl border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-400"
-//                   />
-//                 )}
-
-//                 {error && (
-//                   <p className="rounded-lg bg-red-100 px-3 py-2 text-sm text-red-600">
-//                     {error}
-//                   </p>
-//                 )}
-
-//                 <motion.button
-//                   whileHover={{ scale: 1.03 }}
-//                   whileTap={{ scale: 0.97 }}
-//                   disabled={loading}
-//                   onClick={handleSubmit}
-//                   className="w-full rounded-xl bg-red-600 py-3 font-semibold text-white shadow-lg disabled:opacity-60"
-//                 >
-//                   {loading
-//                     ? "Processing..."
-//                     : mode === "login"
-//                     ? "Sign In"
-//                     : mode === "signup"
-//                     ? "Create Account"
-//                     : "Verify Email"}
-//                 </motion.button>
-
-//                 {mode !== "verify" && (
-//                   <button
-//                     onClick={handleGoogle}
-//                     className="w-full rounded-xl border bg-white py-3 font-medium shadow hover:bg-slate-50"
-//                   >
-//                     Continue with Google
-//                   </button>
-//                 )}
-//               </div>
-
-//               <div className="mt-6 text-center text-sm text-slate-600">
-//                 {mode === "login" && (
-//                   <button onClick={() => setMode("signup")} className="text-indigo-600 hover:underline">
-//                     Don’t have an account? Sign up
-//                   </button>
-//                 )}
-//                 {mode === "signup" && (
-//                   <button onClick={() => setMode("login")} className="text-indigo-600 hover:underline">
-//                     Already have an account? Sign in
-//                   </button>
-//                 )}
-//               </div>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-import { SignUp } from '@clerk/nextjs'
-
-export default function Page() {
+export default function SignInPage() {
   return (
-    <div className='flex justify-center items-center min-h-screen py-8'>
-        Just Say Hello!
-      {/* <SignUp /> */}
+    <div className="min-h-screen bg-cream flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-green-800 rounded-2xl mb-3">
+            <Leaf className="w-7 h-7 text-gold-400" />
+          </div>
+          <h1 className="text-2xl font-heading font-bold text-green-800">
+            Welcome Back
+          </h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Sign in to continue your green journey
+          </p>
+        </div>
+        <SignIn
+          appearance={{
+            elements: {
+              rootBox: "w-full",
+              card: "shadow-lg border border-gray-100 rounded-2xl",
+              headerTitle: "hidden",
+              headerSubtitle: "hidden",
+              formButtonPrimary:
+                "bg-green-800 hover:bg-green-700 text-white rounded-xl",
+              footerActionLink: "text-green-700 hover:text-green-800",
+            },
+          }}
+          afterSignInUrl="/dashboard"
+          signUpUrl="/sign-up"
+        />
+      </div>
     </div>
-  )
+  );
 }

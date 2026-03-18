@@ -1,57 +1,48 @@
-import { ArrowRight, Sparkles } from "lucide-react";
-// import { Link } from "next/link";
-import { Button } from "@/components/ui/button";
+// src/components/landing/CTASection.tsx
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Leaf, Sparkles } from "lucide-react";
 
-export const CTASection = () => {
+export function CTASection() {
   return (
-    <section className="py-20 lg:py-32 bg-background">
-      <div className="container-main">
-        <div className="relative bg-gradient-card rounded-3xl overflow-hidden shadow-card border border-border/50">
-          {/* Background decorations */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <section className="py-20 md:py-28 bg-cream relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-400 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold-400 rounded-full blur-3xl" />
+      </div>
 
-          <div className="relative z-10 px-8 py-16 lg:px-16 lg:py-24 text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 mb-8">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-foreground">
-                Join 50,000+ changemakers
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 max-w-3xl mx-auto">
-              Ready to Build Your
-              <span className="text-primary"> Green Future?</span>
-            </h2>
-
-            {/* Description */}
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Start your journey today. Learn in-demand skills, connect with mentors, and make an impact on the planet.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="xl" asChild>
-                <Link href="/dashboard">
-                  Start Learning Free
-                  <ArrowRight className="w-5 h-5" />
-                </Link> 
-              </Button>
-              <Button variant="outline" size="xl">
-                Talk to Our Team
-              </Button>
-            </div>
-
-            {/* Trust indicators */}
-            <p className="mt-8 text-sm text-muted-foreground">
-              No credit card required • Free forever tier • Cancel anytime
-            </p>
-          </div>
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-20 h-20 bg-green-800 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <Leaf className="w-10 h-10 text-gold-400" />
         </div>
+
+        <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
+          Ready to Build Your{" "}
+          <span className="text-green-700">Green Future?</span>
+        </h2>
+
+        <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Join hundreds of young Cameroonians who are turning green skills into
+          sustainable livelihoods. It&apos;s free, AI-powered, and designed for you.
+        </p>
+
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/sign-up">
+            <Button
+              size="lg"
+              className="bg-green-800 hover:bg-green-700 text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
+            >
+              <Sparkles className="w-5 h-5 mr-2" />
+              Get Started — It&apos;s Free
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </Link>
+        </div>
+
+        <p className="mt-6 text-sm text-gray-500">
+          No credit card required · Works on mobile · English & French
+        </p>
       </div>
     </section>
   );
-};
+}
