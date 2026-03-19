@@ -20,7 +20,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "GreenSkill Hub — AI-Powered Green Skills for Cameroon",
+  title: "Greener Base — AI-Powered Green Skills for Cameroon",
   description:
     "Discover green skills, learn practical techniques, and launch sustainable businesses with AI-powered guidance. Built for Cameroonian youths.",
   keywords: [
@@ -34,16 +34,16 @@ export const metadata: Metadata = {
     "youth employment",
   ],
   openGraph: {
-    title: "GreenSkill Hub — Turn Green Skills Into Livelihoods",
+    title: "Greener Base — Turn Green Skills Into Livelihoods",
     description:
       "AI-powered platform helping Cameroonian youths discover climate-smart skills and build sustainable businesses.",
     type: "website",
     locale: "en_CM",
-    siteName: "GreenSkill Hub",
+    siteName: "Greener Base",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GreenSkill Hub — AI-Powered Green Skills for Cameroon",
+    title: "Greener Base — AI-Powered Green Skills for Cameroon",
     description:
       "Discover green skills, learn practical techniques, and launch sustainable businesses.",
   },

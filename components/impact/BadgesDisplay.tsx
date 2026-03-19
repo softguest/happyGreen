@@ -258,7 +258,7 @@ export function BadgesDisplay({ badges: earnedBadges }: Props) {
             </h3>
             <p className="text-gray-600 mt-2">
               Congratulations! You&apos;ve unlocked every badge. You&apos;re a true
-              GreenSkill Hub champion!
+              Greener Base champion!
             </p>
           </CardContent>
         </Card>

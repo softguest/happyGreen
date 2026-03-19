@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { ImpactDashboardView } from "@/components/impact/ImpactDashboardView";
 
 export const metadata = {
-  title: "My Impact | GreenSkill Hub",
+  title: "My Impact | Greener Base",
 };
 
 export default async function ImpactPage() {

@@ -89,7 +89,7 @@ export function DashboardSidebar() {
 
         {/* Footer */}
         <div className="px-4 py-4 border-t border-gray-800 text-xs text-gray-500">
-          <p>GreenSkill Hub Dashboard</p>
+          <p>Greener Base Dashboard</p>
         </div>
       </div>
     </aside>

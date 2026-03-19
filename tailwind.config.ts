@@ -13,7 +13,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // === GreenSkill Hub Brand Colors ===
+        // === Greener Base Brand Colors ===
         
         green: {
           50: "#E8F5E9",

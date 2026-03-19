@@ -3,7 +3,7 @@ import { getUserBusinessPlans, getUserSkillsForPlanning } from "@/actions/busine
 import { BusinessPlansView } from "@/components/business/BusinessPlansView";
 
 export const metadata = {
-  title: "Business Planner | GreenSkill Hub",
+  title: "Business Planner | Greener Base",
 };
 
 export default async function BusinessPage() {

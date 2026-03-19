@@ -101,8 +101,8 @@ export function PlanPDFExport({ plan, skillName }: Props) {
       doc.setFillColor(46, 125, 50);
       doc.rect(0, 0, pageWidth, 40, "F");
 
-      addText("GreenSkill Hub", 10, false, [200, 230, 200]);
-      doc.text("GreenSkill Hub — Green Business Plan", margin, 14);
+      addText("Greener Base", 10, false, [200, 230, 200]);
+      doc.text("Greener Base — Green Business Plan", margin, 14);
 
       addText(plan.title, 18, true, [255, 255, 255]);
       doc.text(plan.title, margin, 28);
@@ -234,7 +234,7 @@ export function PlanPDFExport({ plan, skillName }: Props) {
         doc.setFontSize(7);
         doc.setTextColor(150, 150, 150);
         doc.text(
-          `GreenSkill Hub — AI-Powered Green Business Plan | Page ${i} of ${totalPages}`,
+          `Greener Base — AI-Powered Green Business Plan | Page ${i} of ${totalPages}`,
           margin,
           doc.internal.pageSize.getHeight() - 10
         );

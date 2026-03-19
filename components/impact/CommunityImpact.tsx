@@ -127,7 +127,7 @@ export function CommunityImpact({ data, userName }: Props) {
                 Community Impact
               </h2>
               <p className="text-green-200 text-sm">
-                GreenSkill Hub collective achievements
+                Greener Base collective achievements
               </p>
             </div>
           </div>
@@ -362,7 +362,7 @@ export function CommunityImpact({ data, userName }: Props) {
           <div className="flex items-center justify-center gap-3 mt-4">
             <ShareButton
               platform="whatsapp"
-              text={`🌱 I'm making a difference with GreenSkill Hub!\n\nJoin me in building green skills and tracking environmental impact in Cameroon.\n\n#GreenSkillHub #ClimateAction`}
+              text={`🌱 I'm making a difference with Greener Base!\n\nJoin me in building green skills and tracking environmental impact in Cameroon.\n\n#GreenSkillHub #ClimateAction`}
             />
             <ShareButton
               platform="twitter"
@@ -370,7 +370,7 @@ export function CommunityImpact({ data, userName }: Props) {
             />
             <ShareButton
               platform="facebook"
-              text={`I'm using GreenSkill Hub to build green skills and track my environmental impact in Cameroon! 🌱🌍`}
+              text={`I'm using Greener Base to build green skills and track my environmental impact in Cameroon! 🌱🌍`}
             />
           </div>
         </CardContent>

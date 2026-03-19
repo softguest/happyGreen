@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { SkillAdvisorView } from "@/components/skills/SkillAdvisorView";
 
 export const metadata = {
-  title: "AI Skill Advisor | GreenSkill Hub",
+  title: "AI Skill Advisor | Greener Base",
 };
 
 export default async function SkillsPage() {

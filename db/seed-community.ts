@@ -30,7 +30,7 @@ async function seedCommunity() {
         region: "centre",
         date: nextWeek,
         endDate: nextWeek,
-        organizer: "GreenSkill Hub & IRAD",
+        organizer: "Greener Base & IRAD",
         isActive: true,
       },
       {

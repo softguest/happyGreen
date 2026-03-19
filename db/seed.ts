@@ -10,7 +10,7 @@ const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql);
 
 async function seed() {
-  console.log("🌱 Seeding GreenSkill Hub database...\n");
+  console.log("🌱 Seeding Greener Base database...\n");
 
   // ==========================================
   // GREEN SKILLS

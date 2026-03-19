@@ -89,7 +89,7 @@ export function AdminSidebar() {
 
         {/* Footer */}
         <div className="px-4 py-4 border-t border-gray-800 text-xs text-gray-500">
-          <p>GreenSkill Hub Admin v1.0</p>
+          <p>Greener Base Admin v1.0</p>
         </div>
       </div>
     </aside>
