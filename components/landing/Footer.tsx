@@ -80,11 +80,11 @@ export function Footer() {
             © {new Date().getFullYear()} GreenSkill Hub. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-gray-500">
-            <span>Powered by Gemini AI</span>
+            <span>Powered by Subjectspot</span>
             <span>·</span>
-            <span>Built with Next.js</span>
+            <span>New Generation Impact</span>
             <span>·</span>
-            <span>Pachipanda Challenge 2025</span>
+            <span>AI Powered Advisor</span>
           </div>
         </div>
       </div>

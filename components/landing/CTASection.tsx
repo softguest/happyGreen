@@ -30,10 +30,10 @@ export function CTASection() {
           <Link href="/sign-up">
             <Button
               size="lg"
-              className="bg-green-800 hover:bg-green-700 text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
+              className="bg-green-800 hover:bg-green-700 cursol-pointer text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
             >
               <Sparkles className="w-5 h-5 mr-2" />
-              Get Started — It&apos;s Free
+                Get Started — It&apos;s Free
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>

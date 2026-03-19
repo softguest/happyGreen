@@ -96,7 +96,16 @@ export function LandingNav() {
               </Button>
             </Link>
             <Link href="/sign-up">
-              <Button className="bg-gold-500 hover:bg-gold-600 text-green-900 font-bold text-sm px-5">
+              <Button 
+              // className="bg-gold-500 hover:bg-gold-600 text-green-900 font-bold text-sm px-5"
+                variant="ghost"
+                className={cn(
+                    "text-sm font-bold bg-gold-500 cursol-pionter",
+                    scrolled
+                      ? "text-green-900 hover:text-green-800"
+                      : "text-white hover:bg-white/10"
+                  )}
+              >
                 Get Started Free
               </Button>
             </Link>

@@ -76,7 +76,7 @@ export function HeroSection() {
               <Link href="/sign-up">
                 <Button
                   size="lg"
-                  className="bg-gold-500 hover:bg-gold-600 text-green-900 font-bold text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-gold-500/30"
+                  className="bg-gold-500 hover:bg-gold-600 text-green-300 cursor-pointer hover:bg-white/10 font-bold text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-gold-500/30"
                 >
                   Start Learning Free
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -86,7 +86,7 @@ export function HeroSection() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl"
+                  className="border-white/30 text-green-800 cursor-pointer hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl"
                 >
                   See How It Works
                 </Button>
@@ -174,7 +174,7 @@ export function HeroSection() {
             </div>
 
             {/* Floating badges */}
-            <div className="absolute -top-4 -right-4 bg-gold-500 text-green-900 rounded-xl px-3 py-2 shadow-lg transform rotate-3">
+            <div className="absolute -top-4 -right-4 bg-gold text-green-900 rounded-xl px-3 py-2 shadow-lg transform rotate-3">
               <p className="text-xs font-bold">🏆 +100 pts</p>
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-3 py-2 shadow-lg transform -rotate-2">
