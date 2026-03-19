@@ -7,7 +7,7 @@ const TESTIMONIALS = [
     name: "Amina Bello",
     role: "Composting Entrepreneur, Douala",
     quote:
-      "Greener Base helped me turn kitchen waste into income. The AI recommended composting based on my location, and the business planner helped me price my products. I now earn 80,000 XAF monthly!",
+      "GreenSkill Up helped me turn kitchen waste into income. The AI recommended composting based on my location, and the business planner helped me price my products. I now earn 80,000 XAF monthly!",
     avatar: "AB",
     rating: 5,
   },

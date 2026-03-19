@@ -3,7 +3,7 @@ import { getAllPathways } from "@/actions/learning";
 import { PathwaysList } from "@/components/learning/PathwaysList";
 
 export const metadata = {
-  title: "Learning Paths | Greener Base",
+  title: "Learning Paths | GreenSkill Up",
 };
 
 export default async function LearnPage() {

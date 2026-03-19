@@ -58,7 +58,7 @@ export function LandingNav() {
                 scrolled ? "text-green-800" : "text-white"
               )}
             >
-             Greener Base 
+             GreenSkill Up
             </span>
           </Link>
 
@@ -131,7 +131,7 @@ export function LandingNav() {
                   <Leaf className="w-5 h-5 text-gold-400" />
                 </div>
                 <span className="text-lg font-heading font-bold text-green-800">
-                  Greener Base
+                  GreenSkill Up
                 </span>
               </div>
               <nav className="px-4 py-4 space-y-1">

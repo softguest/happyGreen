@@ -7,14 +7,14 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 
 const FAQS = [
   {
-    question: "Is Greener Base really free?",
+    question: "Is GreenSkill Up really free?",
     answer:
       "Yes! Creating an account, getting AI skill recommendations, accessing learning modules, and using the business planner are all completely free. We believe every young person should have access to green skills training regardless of their financial situation.",
   },
   {
-    question: "Who is Greener Base for?",
+    question: "Who is GreenSkill Up for?",
     answer:
-      "Greener Base is designed for Cameroonian youths aged 18-35, including students, unemployed or underemployed youth, and aspiring green entrepreneurs. Whether you're in Douala, Yaoundé, Bamenda, or any other city or village, the platform adapts to your local context.",
+      "GreenSkill Up is designed for Cameroonian youths aged 18-35, including students, unemployed or underemployed youth, and aspiring green entrepreneurs. Whether you're in Douala, Yaoundé, Bamenda, or any other city or village, the platform adapts to your local context.",
   },
   {
     question: "How does the AI Skill Advisor work?",
@@ -34,12 +34,12 @@ const FAQS = [
   {
     question: "What languages does the platform support?",
     answer:
-      "Greener Base supports both English and French, Cameroon's two official languages. You can set your preferred language during onboarding.",
+      "GreenSkill Up supports both English and French, Cameroon's two official languages. You can set your preferred language during onboarding.",
   },
   {
-    question: "Do I need a computer to use Greener Base?",
+    question: "Do I need a computer to use GreenSkill Up?",
     answer:
-      "No! Greener Base is designed mobile-first, meaning it works perfectly on smartphones. You just need a basic internet connection to access the platform. Learning modules are kept short (5-10 minutes) to be friendly on mobile data.",
+      "No! GreenSkill Up is designed mobile-first, meaning it works perfectly on smartphones. You just need a basic internet connection to access the platform. Learning modules are kept short (5-10 minutes) to be friendly on mobile data.",
   },
   {
     question: "How do points and badges work?",
@@ -59,7 +59,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Everything you need to know about Greener Base
+            Everything you need to know about GreenSkill Up
           </p>
         </div>
 

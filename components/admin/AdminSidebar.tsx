@@ -43,7 +43,7 @@ export function AdminSidebar() {
           </div>
           <div>
             <h1 className="text-lg font-heading font-bold">Admin Panel</h1>
-            <p className="text-xs text-gray-400">GreenSkill Hub</p>
+            <p className="text-xs text-gray-400">GreenSkill Up</p>
           </div>
         </div>
 
@@ -89,7 +89,7 @@ export function AdminSidebar() {
 
         {/* Footer */}
         <div className="px-4 py-4 border-t border-gray-800 text-xs text-gray-500">
-          <p>Greener Base Admin v1.0</p>
+          <p>GreenSkill Up Admin v1.0</p>
         </div>
       </div>
     </aside>

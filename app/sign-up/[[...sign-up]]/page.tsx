@@ -11,7 +11,7 @@ export default function SignUpPage() {
             <Leaf className="w-7 h-7 text-gold-400" />
           </div>
           <h1 className="text-2xl font-heading font-bold text-green-800">
-            Join Greener Base
+            Join GreenSkill Up
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
             Start your green skills journey — it&apos;s free!

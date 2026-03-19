@@ -3,7 +3,7 @@ import { getUserSkillsForPlanning } from "@/actions/business";
 import { NewPlanWizard } from "@/components/business/NewPlanWizard";
 
 export const metadata = {
-  title: "New Business Plan | Greener Base",
+  title: "New Business Plan | GreenSkill Up",
 };
 
 export default async function NewPlanPage() {

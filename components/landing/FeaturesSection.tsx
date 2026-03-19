@@ -78,7 +78,7 @@ export function FeaturesSection() {
             <span className="text-green-700">Go Green</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            From discovering skills to launching businesses, Greener Base
+            From discovering skills to launching businesses, GreenSkill Up
             provides the tools young Cameroonians need to build climate-resilient
             livelihoods.
           </p>

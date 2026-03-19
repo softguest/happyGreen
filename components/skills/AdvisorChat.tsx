@@ -37,7 +37,7 @@ export function AdvisorChat() {
       id: "welcome",
       role: "assistant",
       content:
-        "Hello! 🌱 I'm your Greener Base AI Advisor. What green skills would you like to explore today?",
+        "Hello! 🌱 I'm your GreenSkill Up AI Advisor. What green skills would you like to explore today?",
     },
   ]);
 
@@ -54,7 +54,7 @@ export function AdvisorChat() {
         id: "welcome",
         role: "assistant",
         content:
-          "Hello! 🌱 I'm your Greener Base AI Advisor. What green skills would you like to explore today?",
+          "Hello! 🌱 I'm your GreenSkill Up AI Advisor. What green skills would you like to explore today?",
       },
     ]);
     setError(null);

@@ -42,7 +42,7 @@ export function MobileNav() {
           <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center">
             <Leaf className="w-5 h-5 text-green-900" />
           </div>
-          <span className="font-heading font-bold">Greener Base</span>
+          <span className="font-heading font-bold">GreenSkill Up</span>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>

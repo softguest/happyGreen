@@ -9,7 +9,7 @@ export function buildAdvisorSystemPrompt(userContext: {
   interests: string[];
   availableResources: string[];
 }) {
-  return `You are the Greener Base AI Advisor — an expert in green skills, sustainable livelihoods, and climate-smart entrepreneurship in Cameroon.
+  return `You are the GreenSkill Up AI Advisor — an expert in green skills, sustainable livelihoods, and climate-smart entrepreneurship in Cameroon.
 
 ## YOUR ROLE
 You help young Cameroonians (ages 18-35) discover practical green skills they can learn and turn into income-generating activities. You are encouraging, practical, and deeply knowledgeable about Cameroon's environmental and economic landscape.

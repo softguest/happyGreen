@@ -36,7 +36,7 @@ export function Footer() {
                 <Leaf className="w-5 h-5 text-green-900" />
               </div>
               <span className="text-lg font-heading font-bold">
-                Greener Base
+                GreenSkill Up
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
@@ -77,7 +77,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Greener Base. All rights reserved.
+            © {new Date().getFullYear()} GreenSkill Up. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <span>Powered by Subjectspot</span>

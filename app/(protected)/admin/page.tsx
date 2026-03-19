@@ -3,7 +3,7 @@ import { getAdminDashboardData } from "@/actions/admin";
 import { AdminOverview } from "@/components/admin/AdminOverview";
 
 export const metadata = {
-  title: "Admin Dashboard | Greener Base",
+  title: "Admin Dashboard | GreenSkill Up",
 };
 
 export default async function AdminDashboardPage() {

@@ -19,7 +19,7 @@ export default async function OnboardingPage() {
           <Leaf className="w-8 h-8 text-gold-500" />
         </div>
         <h1 className="text-3xl font-heading font-bold text-green-800">
-          Welcome to Greener Base
+          Welcome to GreenSkill Up
         </h1>
         <p className="text-muted-foreground mt-2 max-w-md mx-auto">
           Let&apos;s set up your profile so we can recommend the best green skills

@@ -43,7 +43,7 @@ export function DashboardSidebar() {
           </div>
           <div>
             <h1 className="text-lg font-heading font-bold">Account Panel</h1>
-            <p className="text-xs text-gray-400">GreenSkill Hub</p>
+            <p className="text-xs text-gray-400">GreenSkill Up</p>
           </div>
         </div>
 
@@ -89,7 +89,7 @@ export function DashboardSidebar() {
 
         {/* Footer */}
         <div className="px-4 py-4 border-t border-gray-800 text-xs text-gray-500">
-          <p>Greener Base Dashboard</p>
+          <p>GreenSkill Up Dashboard</p>
         </div>
       </div>
     </aside>

@@ -30,7 +30,7 @@ export function ImpactSection() {
             Track Your Real-World Impact
           </h2>
           <p className="mt-4 text-lg text-green-200">
-            Every action counts. Greener Base helps you measure and visualize
+            Every action counts. GreenSkill Up helps you measure and visualize
             the environmental difference you&apos;re making.
           </p>
         </div>

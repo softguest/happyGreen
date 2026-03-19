@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { ProfileView } from "@/components/profile/ProfileView";
 
 export const metadata = {
-  title: "My Profile | Greener Base",
+  title: "My Profile | GreenSkill Up",
 };
 
 export default async function ProfilePage() {

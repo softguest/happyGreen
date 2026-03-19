@@ -26,7 +26,7 @@ export default async function AdminSettingsPage() {
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <p className="text-gray-500">Platform</p>
-              <p className="font-medium">Greener Base v1.0</p>
+              <p className="font-medium">GreenSkill Up v1.0</p>
             </div>
             <div>
               <p className="text-gray-500">Framework</p>

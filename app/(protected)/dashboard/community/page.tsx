@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 import { CommunityView } from "@/components/community/CommunityView";
 
 export const metadata = {
-  title: "Community | Greener Base",
+  title: "Community | GreenSkill Up",
 };
 
 interface Props {

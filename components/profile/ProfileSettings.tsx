@@ -387,7 +387,7 @@ export function ProfileSettings({ profile }: Props) {
 
       {/* App Info */}
       <div className="text-center text-xs text-muted-foreground pb-4 space-y-1">
-        <p>Greener Base v1.0 — AI-Powered Green Skills Platform</p>
+        <p>GreenSkill Up v1.0 — AI-Powered Green Skills Platform</p>
         <p>Built for Cameroonian youth 🇨🇲 • Powered by Subjectspot</p>
       </div>
     </div>
