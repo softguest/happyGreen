@@ -68,74 +68,101 @@ export function SkillRecommendations({ profile, savedSkillNames }: Props) {
 
   const regionInfo = CAMEROON_REGIONS.find((r) => r.value === profile.region);
 
+  // const getRecommendations = async () => {
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setRecommendations(null);
+
+  //   try {
+  //     const response = await fetch("/api/ai/advisor", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         messages: [],
+  //         mode: "recommend",
+  //       }),
+  //     });
+
+  //     if (!response.ok) throw new Error("Failed to get recommendations");
+
+  //     const reader = response.body?.getReader();
+  //     if (!reader) throw new Error("No response body");
+
+  //     let fullText = "";
+  //     const decoder = new TextDecoder();
+
+  //     while (true) {
+  //       const { done, value } = await reader.read();
+  //       if (done) break;
+
+  //       const chunk = decoder.decode(value, { stream: true });
+
+  //       // Parse the data stream format
+  //       const lines = chunk.split("\n");
+  //       for (const line of lines) {
+  //         if (line.startsWith("0:")) {
+  //           // Text delta - extract the actual text
+  //           try {
+  //             const textContent = JSON.parse(line.slice(2));
+  //             fullText += textContent;
+  //           } catch {
+  //             // skip non-JSON lines
+  //           }
+  //         }
+  //       }
+  //     }
+
+  //     // Parse the JSON from the response
+  //     const jsonMatch = fullText.match(/```json\s*([\s\S]*?)\s*```/);
+  //     if (jsonMatch) {
+  //       const parsed: ParsedResponse = JSON.parse(jsonMatch[1]);
+  //       setRecommendations(parsed);
+  //     } else {
+  //       // Try to parse the whole response as JSON
+  //       try {
+  //         const parsed: ParsedResponse = JSON.parse(fullText);
+  //         setRecommendations(parsed);
+  //       } catch {
+  //         setError(
+  //           "Could not parse AI recommendations. Please try again."
+  //         );
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.error("Recommendation error:", err);
+  //     setError("Failed to get recommendations. Please try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const getRecommendations = async () => {
     setIsLoading(true);
     setError(null);
-    setRecommendations(null);
 
     try {
-      const response = await fetch("/api/ai/advisor", {
+      const res = await fetch("/api/ai/advisor", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [],
-          mode: "recommend",
-        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mode: "recommend" }),
       });
 
-      if (!response.ok) throw new Error("Failed to get recommendations");
+      const data = await res.json();
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error("No response body");
-
-      let fullText = "";
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-
-        // Parse the data stream format
-        const lines = chunk.split("\n");
-        for (const line of lines) {
-          if (line.startsWith("0:")) {
-            // Text delta - extract the actual text
-            try {
-              const textContent = JSON.parse(line.slice(2));
-              fullText += textContent;
-            } catch {
-              // skip non-JSON lines
-            }
-          }
-        }
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to fetch");
       }
 
-      // Parse the JSON from the response
-      const jsonMatch = fullText.match(/```json\s*([\s\S]*?)\s*```/);
-      if (jsonMatch) {
-        const parsed: ParsedResponse = JSON.parse(jsonMatch[1]);
-        setRecommendations(parsed);
-      } else {
-        // Try to parse the whole response as JSON
-        try {
-          const parsed: ParsedResponse = JSON.parse(fullText);
-          setRecommendations(parsed);
-        } catch {
-          setError(
-            "Could not parse AI recommendations. Please try again."
-          );
-        }
-      }
+      setRecommendations(data);
     } catch (err) {
-      console.error("Recommendation error:", err);
+      console.error(err);
       setError("Failed to get recommendations. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
-
   const handleSaveSkill = async (rec: Recommendation) => {
     if (savedSkills.includes(rec.skillName)) return;
     setSavingSkill(rec.skillName);

@@ -14,7 +14,7 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[100vh] flex items-center overflow-hidden">
+    <section className="bg-green-800 relative min-h-[100vh] flex items-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 gradient-green" />
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
