@@ -14,10 +14,10 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="bg-green-800 relative min-h-[100vh] flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 gradient-green" />
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+    <section className="relative min-h-screen flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
+       {/* Background Glow */}
+      <div className="absolute w-[500px] h-[500px] bg-green-500/20 blur-3xl rounded-full top-[-100px] left-[-100px]" />
+      <div className="absolute w-[400px] h-[400px] bg-emerald-400/10 blur-3xl rounded-full bottom-[-120px] right-[-120px]" />
 
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-green-600/20 rounded-full blur-3xl animate-pulse" />
@@ -123,7 +123,7 @@ export function HeroSection() {
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
                   <div className="w-3 h-3 rounded-full bg-green-400" />
                   <span className="text-white/60 text-xs ml-2">
-                    greenskillhub.cm/dashboard
+                    greenskillup.com/dashboard
                   </span>
                 </div>
 
@@ -174,7 +174,7 @@ export function HeroSection() {
             </div>
 
             {/* Floating badges */}
-            <div className="absolute -top-4 -right-4 bg-gold text-green-900 rounded-xl px-3 py-2 shadow-lg transform rotate-3">
+            <div className="bg-slate-200/30 absolute -top-4 -right-4 bg-gold text-green-900 rounded-xl px-3 py-2 shadow-lg transform rotate-3">
               <p className="text-xs font-bold">🏆 +100 pts</p>
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-3 py-2 shadow-lg transform -rotate-2">

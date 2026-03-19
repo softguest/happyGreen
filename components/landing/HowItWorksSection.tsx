@@ -32,7 +32,7 @@ const STEPS = [
     title: "Launch Your Green Business",
     description:
       "Use the AI business planner to turn your skills into income. Track your environmental impact as you grow.",
-    color: "bg-gold-600",
+    color: "bg-yellow-600",
   },
 ];
 

@@ -48,7 +48,7 @@ export function LandingNav() {
               <Leaf
                 className={cn(
                   "w-5 h-5",
-                  scrolled ? "text-gold-400" : "text-gold-400"
+                  scrolled ? "text-white" : "text-white"
                 )}
               />
             </div>
@@ -128,7 +128,7 @@ export function LandingNav() {
             <SheetContent side="right" className="w-72 bg-white p-0">
               <div className="flex items-center gap-2.5 px-6 py-5 border-b border-gray-100">
                 <div className="w-9 h-9 bg-green-800 rounded-xl flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-gold-400" />
+                  <Leaf className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-lg font-heading font-bold text-green-800">
                   GreenSkill Up

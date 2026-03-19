@@ -13,7 +13,7 @@ export function CTASection() {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="w-20 h-20 bg-green-800 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-          <Leaf className="w-10 h-10 text-gold-400" />
+          <Leaf className="w-10 h-10 text-white" />
         </div>
 
         <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
