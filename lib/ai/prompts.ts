@@ -101,6 +101,7 @@ Please recommend exactly 4 green skills, ranked by relevance. For EACH skill, pr
 \`\`\`
 
 Make recommendations highly specific to ${userContext.region} region, ${userContext.city || "their area"}, considering the ${userContext.climateZone} climate zone.`;
+
 }
 
 export function buildBusinessIdeaPrompt(skillName: string, userContext: {

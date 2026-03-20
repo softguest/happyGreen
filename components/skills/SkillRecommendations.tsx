@@ -1,7 +1,7 @@
 // src/components/skills/SkillRecommendations.tsx
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useEffect, useRef} from "react";
 // import { useCompletion } from "ai/react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -65,76 +65,129 @@ export function SkillRecommendations({ profile, savedSkillNames }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   const regionInfo = CAMEROON_REGIONS.find((r) => r.value === profile.region);
 
-  const getRecommendations = async () => {
-    setIsLoading(true);
-    setError(null);
-    setRecommendations(null);
+  // const getRecommendations = async () => {
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setRecommendations(null);
 
+  //   try {
+  //     const response = await fetch("/api/ai/recommend", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         messages: [],
+  //         mode: "recommend",
+  //       }),
+  //     });
+
+  //     if (!response.ok) throw new Error("Failed to get recommendations");
+
+  //     const reader = response.body?.getReader();
+  //     if (!reader) throw new Error("No response body");
+
+  //     let fullText = "";
+  //     const decoder = new TextDecoder();
+
+  //     while (true) {
+  //       const { done, value } = await reader.read();
+  //       if (done) break;
+
+  //       const chunk = decoder.decode(value, { stream: true });
+
+  //       // Parse the data stream format
+  //       const lines = chunk.split("\n");
+  //       for (const line of lines) {
+  //         if (line.startsWith("0:")) {
+  //           // Text delta - extract the actual text
+  //           try {
+  //             const textContent = JSON.parse(line.slice(2));
+  //             fullText += textContent;
+  //           } catch {
+  //             // skip non-JSON lines
+  //           }
+  //         }
+  //       }
+  //     }
+
+  //     // Parse the JSON from the response
+  //     const jsonMatch = fullText.match(/```json\s*([\s\S]*?)\s*```/);
+  //     if (jsonMatch) {
+  //       const parsed: ParsedResponse = JSON.parse(jsonMatch[1]);
+  //       setRecommendations(parsed);
+  //     } else {
+  //       // Try to parse the whole response as JSON
+  //       try {
+  //         const parsed: ParsedResponse = JSON.parse(fullText);
+  //         setRecommendations(parsed);
+  //       } catch {
+  //         setError(
+  //           "Could not parse AI recommendations. Please try again."
+  //         );
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.error("Recommendation error:", err);
+  //     setError("Failed to get recommendations. Please try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  useEffect(() => {
+  const cached = localStorage.getItem("skill_recommendations");
+  if (cached) {
     try {
-      const response = await fetch("/api/ai/advisor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [],
-          mode: "recommend",
-        }),
-      });
+      setRecommendations(JSON.parse(cached));
+    } catch {}
+  }
+}, []);
 
-      if (!response.ok) throw new Error("Failed to get recommendations");
+  const getRecommendations = async () => {
+  if (abortRef.current) {
+    abortRef.current.abort();
+  }
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error("No response body");
+  const controller = new AbortController();
+  abortRef.current = controller;
 
-      let fullText = "";
-      const decoder = new TextDecoder();
+  setIsLoading(true);
+  setError(null);
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+  try {
+    const response = await fetch("/api/ai/recommend", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        mode: "recommend",
+        profile, // ✅ send profile explicitly
+      }),
+    });
 
-        const chunk = decoder.decode(value, { stream: true });
+    if (!response.ok) throw new Error("Failed to get recommendations");
 
-        // Parse the data stream format
-        const lines = chunk.split("\n");
-        for (const line of lines) {
-          if (line.startsWith("0:")) {
-            // Text delta - extract the actual text
-            try {
-              const textContent = JSON.parse(line.slice(2));
-              fullText += textContent;
-            } catch {
-              // skip non-JSON lines
-            }
-          }
-        }
-      }
+    const data = await response.json(); // ✅ no streaming parsing
 
-      // Parse the JSON from the response
-      const jsonMatch = fullText.match(/```json\s*([\s\S]*?)\s*```/);
-      if (jsonMatch) {
-        const parsed: ParsedResponse = JSON.parse(jsonMatch[1]);
-        setRecommendations(parsed);
-      } else {
-        // Try to parse the whole response as JSON
-        try {
-          const parsed: ParsedResponse = JSON.parse(fullText);
-          setRecommendations(parsed);
-        } catch {
-          setError(
-            "Could not parse AI recommendations. Please try again."
-          );
-        }
-      }
-    } catch (err) {
-      console.error("Recommendation error:", err);
-      setError("Failed to get recommendations. Please try again.");
-    } finally {
-      setIsLoading(false);
+    setRecommendations(data);
+
+    // ✅ Cache result
+    localStorage.setItem(
+      "skill_recommendations",
+      JSON.stringify(data)
+    );
+  } catch (err: any) {
+    if (err.name !== "AbortError") {
+      console.error(err);
+      setError("Failed to get recommendations. Try again.");
     }
-  };
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleSaveSkill = async (rec: Recommendation) => {
     if (savedSkills.includes(rec.skillName)) return;
@@ -168,6 +221,7 @@ export function SkillRecommendations({ profile, savedSkillNames }: Props) {
         return "bg-gray-100 text-gray-700";
     }
   };
+  
 
   return (
     <div className="space-y-6">
@@ -184,7 +238,7 @@ export function SkillRecommendations({ profile, savedSkillNames }: Props) {
             <Badge variant="outline" className="border-green-300 text-green-700">
               {regionInfo?.climateZone || "equatorial"} zone
             </Badge>
-            {(profile.interests as string[])?.map((interest) => {
+            {(Array.isArray(profile.interests) ? profile.interests : [])?.map((interest) => {
               const cat = getCategoryInfo(interest);
               return (
                 <Badge
