@@ -54,7 +54,7 @@ export default async function DashboardPage() {
   };
 
   return (
-    <div className="space-y-6 p-8">
+    <div className="space-y-6 p-2 md:p-8">
       <WelcomeCard profile={profile} />
       <StatsOverview stats={stats} />
       <QuickActions interests={profile.interests as string[]} />

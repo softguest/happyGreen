@@ -10,7 +10,7 @@ export default async function LearnPage() {
   const { pathways, userProgress } = await getAllPathways();
 
   return (
-    <div className="space-y-6 p-8">
+    <div className="space-y-6 p-2 md:p-8">
       <div>
         <h1 className="text-2xl font-heading font-bold text-gray-900">
           Learning Pathways

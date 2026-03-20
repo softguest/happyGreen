@@ -14,7 +14,7 @@ export default async function ImpactPage() {
   if (!summary) redirect("/onboarding");
 
   return (
-    <div className="space-y-6 p-8">
+    <div className="space-y-6 p-2 md:p-8">
         <ImpactDashboardView
         summary={summary}
         community={community}

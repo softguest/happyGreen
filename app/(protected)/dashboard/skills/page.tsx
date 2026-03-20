@@ -14,7 +14,7 @@ export default async function SkillsPage() {
   if (!data) redirect("/onboarding");
 
   return (
-    <div className="space-y-6 p-8">
+    <div className="space-y-6 p-2 md:p-8">
         <SkillAdvisorView
         profile={data.profile}
         savedSkills={data.savedSkills}

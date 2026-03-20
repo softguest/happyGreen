@@ -11,7 +11,7 @@ export default async function AdminSettingsPage() {
   const logs = await getAdminLogs(30);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-2 md:p-8">
       <h1 className="text-2xl font-heading font-bold text-gray-900">
         Admin Settings
       </h1>
