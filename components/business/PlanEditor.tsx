@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { updateBusinessPlan } from "@/actions/business";
 import { cn } from "@/lib/utils";
 import {
@@ -36,11 +35,6 @@ import { PlanPDFExport } from "./PlanPDFExport";
 import { AISectionGenerator } from "./AISectionGenerator";
 import { PlanReview } from "./PlanReview";
 import { PlanChat } from "./PlanChat";
-// import { AISectionGenerator } from "./AISectionGenerator";
-// import { PlanReview } from "./PlanReview";
-// import { PlanPDFExport } from "./PlanPDFExport";
-// import { PlanChat } from "./PlanChat";
-
 interface PlanData {
   plan: {
     id: string;

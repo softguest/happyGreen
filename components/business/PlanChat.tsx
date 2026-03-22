@@ -1,11 +1,23 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { useChat } from "@ai-sdk/react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { Send, User, Loader2, Lightbulb, Trash2 } from "lucide-react";
+
+import {
+  Send,
+  User,
+  Loader2,
+  Lightbulb,
+  Trash2,
+} from "lucide-react";
+
+type ChatMessage = {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+};
 
 interface Props {
   planTitle: string;
@@ -17,76 +29,126 @@ const SUGGESTIONS = [
   "How do I find my first 10 customers?",
   "What licenses do I need in Cameroon for this business?",
   "How can I reduce my startup costs?",
-  "What marketing channels should I use?",
-  "How do I compete with existing businesses?",
 ];
 
 export function PlanChat({ planTitle, skillName }: Props) {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
   const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const { messages, status, setMessages } = useChat();
-
-  const isLoading = status === "submitted" || status === "streaming";
-
-  // Seed welcome message
+  // ✅ Seed welcome message
   useEffect(() => {
     setMessages([
       {
         id: "welcome",
         role: "assistant",
-        parts: [{ "type": "text", "text":
-          `I'm here to help with your business plan: **"${planTitle}"**${
-            skillName ? ` (based on ${skillName})` : ""
-          }.\n\nAsk me anything about:\n- 📊 Market analysis and pricing\n- 👥 Finding customers\n- 💰 Financing and costs\n- 📋 Legal requirements in Cameroon\n- 🚀 Marketing and launch strategies\n\nWhat would you like to know?`,}
-        ],
+        content: `I'm here to help with your business plan: "${planTitle}"${
+          skillName ? ` (based on ${skillName})` : ""
+        }.
+
+Ask me anything about:
+- Market analysis
+- Finding customers
+- Costs & funding
+- Legal requirements in Cameroon
+- Marketing strategies
+
+What would you like to know?`,
       },
     ]);
-  }, [planTitle, skillName, setMessages]);
+  }, [planTitle, skillName]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, { id: Date.now().toString(), role: "user", parts: [{ "type": "text", "text": input }] }]);
-      setInput("");
-    }
+  const clearChat = () => {
+    setMessages([
+      {
+        id: "welcome",
+        role: "assistant",
+        content: `How can I help with "${planTitle}"?`,
+      },
+    ]);
+    setError(null);
   };
 
-  const handleSuggestion = (text: string) => {
-    setMessages([...messages, { id: Date.now().toString(), role: "user", parts: [{ "type": "text", "text": text }] }]);
-  };
+  // ✅ Core streaming function (same as AdvisorChat)
+  async function sendMessage(text: string) {
+    setError(null);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      if (input.trim()) {
-        setMessages([...messages, { id: Date.now().toString(), role: "user", parts: [{ "type": "text", "text": input }] }]);
-        setInput("");
+    const userMsg: ChatMessage = {
+      id: `user-${Date.now()}`,
+      role: "user",
+      content: text,
+    };
+
+    const updatedMessages = [...messages, userMsg];
+    setMessages(updatedMessages);
+    setIsLoading(true);
+
+    const assistantId = `assistant-${Date.now()}`;
+
+    // placeholder assistant message
+    setMessages((prev) => [
+      ...prev,
+      { id: assistantId, role: "assistant", content: "" },
+    ]);
+
+    try {
+      const res = await fetch("/api/ai/planner", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mode: "chat",
+          planContext: planTitle,
+          messages: updatedMessages.map((m) => ({
+            role: m.role,
+            content: m.content,
+          })),
+        }),
+      });
+
+      if (!res.body) throw new Error("No response body");
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      let fullText = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        fullText += chunk;
+
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === assistantId
+              ? { ...msg, content: fullText }
+              : msg
+          )
+        );
       }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to get response");
+    } finally {
+      setIsLoading(false);
     }
-  };
-
-  const getMessageText = (message: any) => {
-  if (message.display) return message.display;
-
-  if (message.parts) {
-    return message.parts
-      .map((p: any) => {
-        if (p.type === "text") return p.text;
-        // fallback for non-text parts
-        if (p.type === "tool-result") return `[Tool result: ${p.toolName}]`;
-        return "";
-      })
-      .join(" ");
   }
 
-  return "";
-};
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
 
+    sendMessage(input.trim());
+    setInput("");
+  };
 
   return (
     <div className="flex flex-col h-[calc(100vh-350px)] min-h-[400px] max-h-[600px]">
@@ -97,7 +159,9 @@ export function PlanChat({ planTitle, skillName }: Props) {
             <Lightbulb className="w-4 h-4 text-gold-700" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900 text-sm">Business Advisor</h3>
+            <h3 className="font-semibold text-gray-900 text-sm">
+              Business Advisor
+            </h3>
             <p className="text-[10px] text-green-600">AI-Powered</p>
           </div>
         </div>
@@ -105,15 +169,7 @@ export function PlanChat({ planTitle, skillName }: Props) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() =>
-            setMessages([
-              {
-                id: "welcome",
-                role: "assistant",
-                parts: [{ "type": "text", "text": `How can I help with "${planTitle}"?` }],
-              },
-            ])
-          }
+          onClick={clearChat}
           className="text-gray-400 text-xs"
         >
           <Trash2 className="w-3.5 h-3.5 mr-1" />
@@ -128,11 +184,13 @@ export function PlanChat({ planTitle, skillName }: Props) {
             key={message.id}
             className={cn(
               "flex gap-2.5",
-              message.role === "user" ? "justify-end" : "justify-start"
+              message.role === "user"
+                ? "justify-end"
+                : "justify-start"
             )}
           >
             {message.role === "assistant" && (
-              <div className="w-7 h-7 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+              <div className="w-7 h-7 bg-gold-100 rounded-lg flex items-center justify-center">
                 <Lightbulb className="w-3.5 h-3.5 text-gold-700" />
               </div>
             )}
@@ -141,22 +199,19 @@ export function PlanChat({ planTitle, skillName }: Props) {
               className={cn(
                 "max-w-[80%] rounded-2xl px-4 py-3 text-sm",
                 message.role === "user"
-                  ? "bg-green-800 text-white rounded-br-md"
-                  : "bg-white border border-gray-200 text-gray-800 rounded-bl-md shadow-sm"
+                  ? "bg-green-800 text-white"
+                  : "bg-white border border-gray-200 text-gray-800 shadow-sm"
               )}
             >
               <div
                 dangerouslySetInnerHTML={{
-                   __html: formatMessage(getMessageText(message)),
+                  __html: formatMessage(escapeHtml(message.content)),
                 }}
               />
-              {isLoading && message.role === "assistant" && (
-                <span className="animate-pulse ml-1">▍</span>
-              )}
             </div>
 
             {message.role === "user" && (
-              <div className="w-7 h-7 bg-green-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+              <div className="w-7 h-7 bg-green-700 rounded-lg flex items-center justify-center">
                 <User className="w-3.5 h-3.5 text-white" />
               </div>
             )}
@@ -164,13 +219,8 @@ export function PlanChat({ planTitle, skillName }: Props) {
         ))}
 
         {isLoading && (
-          <div className="flex gap-2.5">
-            <div className="w-7 h-7 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <Lightbulb className="w-3.5 h-3.5 text-gold-700" />
-            </div>
-            <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
-              <Loader2 className="w-4 h-4 animate-spin text-gold-600" />
-            </div>
+          <div className="flex gap-2 text-sm text-gray-500">
+            <Loader2 className="animate-spin w-4 h-4" /> Thinking...
           </div>
         )}
 
@@ -178,14 +228,14 @@ export function PlanChat({ planTitle, skillName }: Props) {
       </div>
 
       {/* Suggestions */}
-      {messages.length <= 2 && !isLoading && (
+      {messages.length <= 1 && (
         <div className="pb-2">
           <div className="flex flex-wrap gap-1.5">
-            {SUGGESTIONS.slice(0, 4).map((s, i) => (
+            {SUGGESTIONS.map((s, i) => (
               <button
                 key={i}
-                onClick={() => handleSuggestion(s)}
-                className="text-[11px] bg-white border border-gray-200 rounded-full px-3 py-1 hover:border-gold-300 hover:bg-gold-50 transition-colors text-gray-600"
+                onClick={() => sendMessage(s)}
+                className="text-[11px] bg-white border border-gray-200 rounded-full px-3 py-1"
               >
                 {s}
               </button>
@@ -195,39 +245,37 @@ export function PlanChat({ planTitle, skillName }: Props) {
       )}
 
       {/* Input */}
-      <div className="border-t border-gray-100 pt-3">
-        <form onSubmit={handleSubmit} className="flex items-end gap-2">
-          <Textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask about your business plan..."
-            className="min-h-[44px] max-h-[100px] resize-none rounded-xl text-sm"
-            rows={1}
-            autoFocus
-          />
+      <form onSubmit={handleSubmit} className="flex items-end gap-2 border-t pt-3">
+        <Textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask about your business plan..."
+          className="min-h-[44px] max-h-[100px] resize-none rounded-xl text-sm"
+        />
 
-          <Button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="h-11 w-11 rounded-xl bg-gold-500 hover:bg-gold-600 text-green-900 p-0 flex-shrink-0"
-          >
-            {isLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Send className="w-4 h-4" />
-            )}
-          </Button>
-        </form>
-      </div>
+        <Button type="submit" disabled={isLoading}>
+          <Send className="w-4 h-4" />
+        </Button>
+      </form>
+
+      {error && (
+        <p className="text-red-500 text-xs text-center">{error}</p>
+      )}
     </div>
   );
 }
 
+// ✅ Safe formatting
 function formatMessage(content: string): string {
   return content
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.*?)\*/g, "<em>$1</em>")
-    .replace(/^### (.*$)/gm, '<h4 class="font-semibold text-sm mt-2 mb-1">$1</h4>')
-    .replace(/^## (.*$)/gm, '<h3 class="font-semibold mt-3 mb-1">$1</h3>')
+    .replace(/\n/g, "<br/>");
+}
+
+function escapeHtml(text: string) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
