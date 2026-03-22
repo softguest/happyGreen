@@ -45,53 +45,45 @@ export function AISectionGenerator({
   const [generatedContent, setGeneratedContent] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
 
-  const generate = async () => {
-    setIsGenerating(true);
-    setGeneratedContent(null);
+const generate = async () => {
+  setIsGenerating(true);
+  setGeneratedContent("");
+  setShowPreview(true); // 🔥 open immediately for streaming UX
 
-    try {
-      const response = await fetch("/api/ai/planner", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mode: "generate_section",
-          section,
-          planContext,
-        }),
-      });
+  try {
+    const response = await fetch("/api/ai/planner", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mode: "generate_section",
+        section,
+        planContext,
+      }),
+    });
 
-      if (!response.ok) throw new Error("Failed");
+    if (!response.ok) throw new Error("Failed");
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error("No body");
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error("No body");
 
-      let fullText = "";
-      const decoder = new TextDecoder();
+    let fullText = "";
+    const decoder = new TextDecoder();
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split("\n");
-        for (const line of lines) {
-          if (line.startsWith("0:")) {
-            try {
-              fullText += JSON.parse(line.slice(2));
-            } catch {
-              // skip
-            }
-          }
-        }
-      }
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
 
-      setGeneratedContent(fullText);
-      setShowPreview(true);
-    } catch (error) {
-      console.error("AI generation error:", error);
-    } finally {
-      setIsGenerating(false);
+      const chunk = decoder.decode(value);
+      fullText += chunk;
+
+      setGeneratedContent(fullText); // 🔥 STREAM INTO UI
     }
-  };
+  } catch (error) {
+    console.error("AI generation error:", error);
+  } finally {
+    setIsGenerating(false);
+  }
+};
 
   const handleAccept = () => {
     if (generatedContent) {
