@@ -39,30 +39,6 @@
   }
 }
 
-/* @layer base {
-  body {
-    @apply bg-cream text-foreground font-sans;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
-} */
-
-/* @layer utilities {
-  .gradient-green {
-    @apply bg-gradient-to-br from-green-800 to-green-600;
-  }
-  .gradient-gold {
-    @apply bg-gradient-to-r from-gold-400 to-gold-600;
-  }
-  .card-hover {
-    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
-  }
-  .ai-bubble {
-    @apply border-l-4 border-aichat bg-blue-50 rounded-lg p-4;
-  }
-} */
-
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -212,4 +188,18 @@
   .animate-fade-in-up {
     animation: fade-in-up 0.6s ease-out forwards;
   }
+
+  /* .gradient-green {
+    @apply bg-gradient-to-br from-green-800 to-green-600;
+  }
+  .gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 to-gold-600;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+  .ai-bubble {
+    @apply border-l-4 border-aichat bg-blue-50 rounded-lg p-4;
+  }
+   */
 }

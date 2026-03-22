@@ -156,7 +156,7 @@ export function PathwayDetail({ data }: Props) {
       {/* Header Card */}
       <Card
         className={cn(
-          "border-0 overflow-hidden",
+          "border-0 bg-green-800 overflow-hidden",
           isCompleted ? "gradient-gold" : "gradient-green"
         )}
       >

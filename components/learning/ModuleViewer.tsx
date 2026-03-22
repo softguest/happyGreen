@@ -253,7 +253,7 @@ export function ModuleViewer({ data }: Props) {
         {/* ====== MAIN CONTENT ====== */}
         <main className="flex-1 min-w-0">
           {/* Module Header */}
-          <Card className="border-0 gradient-green text-white mb-6">
+          <Card className="border-0 bg-green-800 text-white mb-6">
             <CardContent className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-2">
                 <Badge
