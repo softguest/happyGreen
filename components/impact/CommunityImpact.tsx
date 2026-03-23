@@ -116,7 +116,7 @@ export function CommunityImpact({ data, userName }: Props) {
   return (
     <div className="space-y-6">
       {/* Community Header */}
-      <Card className="gradient-green border-0 text-white">
+      <Card className="gradient-green bg-green-800 border-0 text-white">
         <CardContent className="p-6">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
@@ -362,11 +362,11 @@ export function CommunityImpact({ data, userName }: Props) {
           <div className="flex items-center justify-center gap-3 mt-4">
             <ShareButton
               platform="whatsapp"
-              text={`🌱 I'm making a difference with GreenSkill Up!\n\nJoin me in building green skills and tracking environmental impact in Cameroon.\n\n#GreenSkillHub #ClimateAction`}
+              text={`🌱 I'm making a difference with GreenSkill Up!\n\nJoin me in building green skills and tracking environmental impact in Cameroon.\n\n#GreenSkillUp #ClimateAction`}
             />
             <ShareButton
               platform="twitter"
-              text={`🌱 Making a difference with @GreenSkillHub! Building green skills and tracking my environmental impact in Cameroon. #GreenSkillHub #ClimateAction #Cameroon`}
+              text={`🌱 Making a difference with @GreenSkillUp! Building green skills and tracking my environmental impact in Cameroon. #GreenSkillUp #ClimateAction #Cameroon`}
             />
             <ShareButton
               platform="facebook"
@@ -390,7 +390,7 @@ function ShareButton({
   text: string;
 }) {
   const encodedText = encodeURIComponent(text);
-  const url = encodeURIComponent("https://greenskillhub.cm");
+  const url = encodeURIComponent("https://greenskillup.com");
 
   const links: Record<string, { href: string; label: string; color: string; emoji: string }> = {
     whatsapp: {

@@ -280,7 +280,7 @@ export function PlanEditor({ data, profileContext }: Props) {
       </div>
 
       {/* Plan Header */}
-      <Card className="border-0 gradient-green text-white">
+      <Card className="border-0 bg-green-800 gradient-green text-white">
         <CardContent className="p-5 md:p-6">
           <div className="flex items-start justify-between">
             <div className="flex-1">
