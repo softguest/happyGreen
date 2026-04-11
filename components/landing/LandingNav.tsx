@@ -58,7 +58,8 @@ export function LandingNav() {
                 scrolled ? "text-green-800" : "text-white"
               )}
             >
-              GreenSkill Up
+              <span className="hidden md:block">GreenSkillUp</span>
+              <span className="block md:hidden">SkillUp</span>
             </span>
           </Link>
 
@@ -109,8 +110,6 @@ export function LandingNav() {
                 {t("getStarted")}
               </Button>
             </Link>
-
-            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu */}
@@ -138,7 +137,7 @@ export function LandingNav() {
                   <Leaf className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-lg font-bold text-green-800">
-                  Up
+                  SkillUp
                 </span>
               </div>
 
@@ -157,20 +156,17 @@ export function LandingNav() {
 
               <div className="px-4 py-4 border-t space-y-2">
                 <Link href="/sign-in" onClick={() => setMobileOpen(false)}>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full cursor-pointer">
                     {t("signIn")}
                   </Button>
                 </Link>
 
                 <Link href="/sign-up" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full bg-gold-500 text-green-900 font-bold">
+                  <Button className="w-full bg-gold-500 text-green-900 font-bold cursor-pointer">
                     {t("getStarted")}
                   </Button>
                 </Link>
 
-                <div className="pt-2">
-                  <LanguageSwitcher />
-                </div>
               </div>
             </SheetContent>
           </Sheet>
