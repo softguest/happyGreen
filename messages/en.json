@@ -1,0 +1,202 @@
+{
+  "home": {
+    "title": "Welcome to GreenSkillHub",
+    "description": "Learn sustainable skills for a greener future"
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "skills": "Green Skills",
+    "impact": "Impact",
+    "faq": "FAQ",
+    "signIn": "Sign In",
+    "getStarted": "Get Started Free"
+  },
+  "hero": {
+    "ai-powered": "AI-Powered Green Skills Platform",
+    "main-sub01": "Turn Green Skills Into",
+    "main-sub02": "Sustainable Livelihoods",
+    "heroDesc": "AI-powered platform helping Cameroonian youths discover climate-smart skills, learn practical techniques, and launch green businesses.",
+    "heroPoint1": "Personalized AI skill recommendations",
+    "heroPoint2": "Step-by-step practical learning modules",
+    "heroPoint3": "AI-guided green business planning",
+    "heroPoint4": "Track your environmental impact",
+    "startLearning": "Start Learning Now",
+    "seeHowItWorks": "See How It Works",
+    "freeToStart": "Free To Start",
+    "welcomeBack": "Welcome back,",
+    "readyToBuildSkills": "Ready to build your green skills today?",
+    "basedOnYourLocation": "Based on your location in Douala, I recommend &quot;Plastic Waste Recycling&quot; — high demand and low startup cost!",
+    "50kgWasteReduced": "50 kg Waste Reduced",
+    "buildForCameroon": "Built for Cameroon",
+    "greenAiAdvisor": "Green AI Advisor"
+  },
+  "features": {
+    "heading": "Platform Features",
+    "subheading": "Everything You Need to",
+    "subheadingHighlight": "Go Green",
+    "fromDescription": "From discovering skills to launching businesses, GreenSkillHub provides the tools young Cameroonians need to build climate-resilient livelihoods.",
+
+    "title01": "AI Skill Advisor",
+    "description01": "Get personalized green skill recommendations based on your location, interests, and available resources in Cameroon.",
+    "sub01": "Powered by Green AI Advisor",
+
+    "title02": "Micro-Learning Pathways.",
+    "description02": "Practical, step-by-step modules you can complete in 5-10 minutes. Includes quizzes and hands-on tasks.",
+    "sub02": "Learn at your own pace.",
+
+     "title03": "Green Business Planner.",
+    "description03": "AI guides you through creating a complete business plan — from problem statement to revenue projections in XAF.",
+    "sub03": "Export as professional PDF.",
+
+    "title04": "Impact Tracking.",
+    "description04": "Log your environmental activities and see your impact visualized. Track waste reduced, trees planted, and income generated.",
+    "sub04": "Real data, real impact.",
+
+    "title05": "Community & Leaderboard",
+    "description05": "Connect with fellow green champions, share tips, ask questions, and climb the impact leaderboard in your region.",
+    "sub05": "Earn badges and points",
+    
+    "title06": "Localized for Cameroon.",
+    "description06": "Content, pricing, and recommendations tailored to Cameroon's 10 regions, climate zones, and local market conditions.",
+    "sub06": "English & French support."
+  },
+  
+  "howItWorks": {
+    "howItWorks": "How It Works",
+    "fourSimpleSteps": "Four simple steps from discovering skills to earning income",
+
+    "stepTitle01": "Create Your Profile",
+    "stepDesc01" : "Sign up for free and tell us about your location, interests, and available resources. Takes less than 2 minutes.",
+
+    "stepTitle02": "Get AI Recommendations",
+    "stepDesc02" : "Our AI analyzes your profile and local climate conditions to suggest the most relevant green skills for you.",
+
+    "stepTitle03": "Learn & Practice",
+    "stepDesc03" : "Follow practical micro-learning pathways with hands-on tasks. Complete quizzes and earn certificates.",
+
+    "stepTitle04": "Launch Your Green Business",
+    "stepDesc04" : "Use the AI business planner to turn your skills into income. Track your environmental impact as you grow.",
+
+    "step": "Step"
+  },
+
+  "SkillsPreview": {
+    "explore": "Explore",
+    "greenSkills": "Green Skills",
+    "discoverIncomeGen": "Discover income-generating skills that also protect the environment.All tailored to Cameroon&apos;s economy and climate.",
+    "discoverYourIdealSkills": "Discover Your Ideal Skills",
+
+    "skillTitle01": "Sustainable Agriculture",
+    "skillPoint011": "Composting & Organic Fertilizer",
+    "skillPoint012": "Climate-Smart Farming",
+    "skillPoint013": "Drip Irrigation",
+    "skillPoint014": "Urban Farming",
+    "skillPoint015": "Agroforestry",
+
+    "skillTitle02": "Waste Management",
+    "skillPoint021": "Plastic Recycling & Upcycling",
+    "skillPoint022": "Community Waste Collection",
+    "skillPoint023": "Biogas Production",
+
+    "skillTitle03": "Renewable Energy",
+    "skillPoint031": "Solar Panel Installation",
+    "skillPoint032": "Efficient Cookstove Production",
+    "skillPoint033": "Biomass Briquettes",
+
+    "skillTitle04": "Water Conservation",
+    "skillPoint041": "Rainwater Harvesting",
+    "skillPoint042": "Water Purification"
+  },
+  "ImpactSection": {
+    "withGreenSkillUp": "Track Your Real-World Impact",
+    "everyActionCounts": "Every action counts. GreenSkill Up helps you measure and visualize the environmental difference you&apos;re making.",
+    "joinGreenCommunity": "Join the Green Community",
+    "connectWithOthers": "Connect with other young Cameroonians building green skills. Share tips, collaborate on projects, and climb the impact leaderboard in your region. Together, we&apos;re building a climate-resilient future.",
+    "regions": "Regions",
+    "greenSkills": "Green Skills",
+    "impactAreas": "Impact Areas",
+
+    "wasteReduce": "Waste Reduced",
+    "treesPlanted": "Trees Planted",
+    "energySaved": "Energy Saved",
+    "waterConserved": "Water Conserved",
+    "seedlingsTracked": "Seedlings Tracked",
+    "kgTracked": "Kg Tracked",
+    "kWhTracked": "KWh Tracked",
+    "litersTracked": "Liters Tracked"
+  },
+
+  "TestimonialsSection": {
+    "whatYouths": "What Youths Are Saying",
+    "realStories": "Real stories from young Cameroonians building green livelihoods with GreenSkillUp.",
+
+    "testiRole01": "Composting Entrepreneur, Douala",
+    "testiQuote01": "GreenSkill Up helped me turn kitchen waste into income. The AI recommended composting based on my location, and the business planner helped me price my products. I now earn 80,000 XAF monthly!",
+
+    "testiRole02": "Solar Technician, Yaoundé",
+    "testiQuote02": "The learning modules are incredibly practical. I completed the solar installation pathway and got my first client within a month. The step-by-step approach made everything so clear.",
+
+    "testiRole03": "Waste Recycling, Bamenda",
+    "testiQuote03": "I love how the platform tracks my environmental impact. Seeing that I've recycled 200kg of plastic this month motivates me to keep going. The community is also very supportive!"
+  },
+
+  "FAQSection": {
+    "frequentlyAsked": "Frequently Asked Questions",
+    "everythingYou": "Everything you need to know about GreenSkill Up",
+
+    "quest01": "Is GreenSkill Up really free?",
+    "ans01" : "Yes! Creating an account, getting AI skill recommendations, accessing learning modules, and using the business planner are all completely free. We believe every young person should have access to green skills training regardless of their financial situation.",
+
+    "quest02": "Who is GreenSkill Up for?",
+    "ans02" : "GreenSkill Up is designed for Cameroonian youths aged 18-35, including students, unemployed or underemployed youth, and aspiring green entrepreneurs. Whether you're in Douala, Yaoundé, Bamenda, or any other city or village, the platform adapts to your local context.",
+
+    "quest03": "How does the AI Skill Advisor work?",
+    "ans03" : "Our AI (powered by Google Gemini) analyzes your location, climate zone, interests, and available resources to recommend the most relevant green skills. For example, if you're in the Far North region, it might recommend drip irrigation or solar installation. If you're in Douala, it might suggest waste recycling or urban farming.",
+
+    "quest04": "What kind of green skills can I learn?",
+    "ans04" : "We cover four main categories: Sustainable Agriculture (composting, agroforestry, smart farming), Waste Management (plastic recycling, biogas), Renewable Energy (solar installation, cookstoves, briquettes), and Water Conservation (rainwater harvesting, purification). Each skill includes practical, hands-on learning modules.",
+
+    "quest05": "Can I really start a business from these skills?",
+    "ans05" :  "Absolutely! Every skill on the platform has real market potential in Cameroon. Our AI Business Planner helps you create a complete business plan with realistic startup costs (in XAF), revenue projections, and step-by-step launch instructions. Many skills can be started with less than 50,000 XAF.",
+
+    "quest06": "What languages does the platform support?",
+    "ans06" : "GreenSkill Up supports both English and French, Cameroon's two official languages. You can set your preferred language during onboarding.",
+
+    "quest07": "Do I need a computer to use GreenSkill Up?",
+    "ans07" : "No! GreenSkill Up is designed mobile-first, meaning it works perfectly on smartphones. You just need a basic internet connection to access the platform. Learning modules are kept short (5-10 minutes) to be friendly on mobile data.",
+
+    "quest08": "How do points and badges work?",
+    "ans08" : "You earn points by completing learning modules (+20), logging impact activities (+10), creating business plans (+50), and participating in the community. Badges are awarded for milestones like completing your first pathway, logging 100kg of waste, or planting 50 trees. Points contribute to your position on the leaderboard."
+  },
+
+  "CTASection": {
+    "readyToBuild": "Ready to Build Your",
+    "greenFuture": "Green Future",
+    "joinHundreds": "Join hundreds of young Cameroonians who are turning green skills into sustainable livelihoods. It's free, AI-powered, and designed for you.",
+    "getStarted": "Get Started — It's Free",
+    "noCreditCard": "No credit card required · Works on mobile · English & French"
+  },
+
+  "Footer": {
+    "AIPoweredPlatform": "AI-powered platform empowering Cameroonian youths to discover green skills, build sustainable livelihoods, and contribute to climate resilience.",
+    "madeWithLove": "Made with ❤️ for Cameroon",
+
+    "features": "Features",
+    "greenSkills": "Green Skills",
+    "howItWorks": "How It Works",
+    "faq": "FAQ",
+
+    "learningPathways": "Learning Pathways",
+    "businessPlanner": "Business Planner",
+    "impactTracker": "Impact Tracker",
+    "community": "Community",
+
+    "ourMission": "Our Mission",
+    "greenChallenge": "Green Economy Challenge",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+
+    "allRights": "GreenSkill Up. All rights reserved."
+  }
+}

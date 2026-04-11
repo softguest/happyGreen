@@ -1,4 +1,5 @@
 // src/components/landing/FeaturesSection.tsx
+"use client";
 import {
   Brain,
   BookOpen,
@@ -9,59 +10,61 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const FEATURES = [
+export function FeaturesSection() {
+  const t = useTranslations("features"); // ✅ hook
+
+  const FEATURES = [
   {
     icon: Brain,
-    title: "AI Skill Advisor",
-    description:
-      "Get personalized green skill recommendations based on your location, interests, and available resources in Cameroon.",
+    title: t("title01"),
+    description: t("description01"),
     color: "bg-green-100 text-green-700",
-    highlight: "Powered by Google Gemini AI",
+    highlight: t("sub01"),
   },
   {
     icon: BookOpen,
-    title: "Micro-Learning Pathways",
+    title: t("title02"),
     description:
-      "Practical, step-by-step modules you can complete in 5-10 minutes. Includes quizzes and hands-on tasks.",
+      t("description02"),
     color: "bg-blue-100 text-blue-700",
-    highlight: "Learn at your own pace",
+    highlight: t("sub02"),
   },
   {
     icon: Lightbulb,
-    title: "Green Business Planner",
+    title: t("title03"),
     description:
-      "AI guides you through creating a complete business plan — from problem statement to revenue projections in XAF.",
+      t("description03"),
     color: "bg-gold-100 text-gold-700",
-    highlight: "Export as professional PDF",
+    highlight: t("sub03"),
   },
   {
     icon: BarChart3,
-    title: "Impact Tracking",
+    title: t("title04"),
     description:
-      "Log your environmental activities and see your impact visualized. Track waste reduced, trees planted, and income generated.",
+      t("description04"),
     color: "bg-orange-100 text-orange-700",
-    highlight: "Real data, real impact",
+    highlight: t("sub04"),
   },
   {
     icon: Users,
-    title: "Community & Leaderboard",
+    title: t("title05"),
     description:
-      "Connect with fellow green champions, share tips, ask questions, and climb the impact leaderboard in your region.",
+      t("description05"),
     color: "bg-purple-100 text-purple-700",
-    highlight: "Earn badges and points",
+    highlight: t("sub05"),
   },
   {
     icon: MapPin,
-    title: "Localized for Cameroon",
+    title: t("title06"),
     description:
-      "Content, pricing, and recommendations tailored to Cameroon's 10 regions, climate zones, and local market conditions.",
+      t("description06"),
     color: "bg-emerald-100 text-emerald-700",
-    highlight: "English & French support",
+    highlight: t("sub06"),
   },
 ];
 
-export function FeaturesSection() {
   return (
     <section id="features" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,17 +73,15 @@ export function FeaturesSection() {
           <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-1.5 mb-4">
             <Sparkles className="w-4 h-4 text-green-700" />
             <span className="text-sm text-green-800 font-medium">
-              Platform Features
+              {t("heading")}
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            Everything You Need to{" "}
-            <span className="text-green-700">Go Green</span>
+            {t("subheading")}{" "}
+            <span className="text-green-700">{t("subheadingHighlight")}</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            From discovering skills to launching businesses, GreenSkill Up
-            provides the tools young Cameroonians need to build climate-resilient
-            livelihoods.
+            {t("fromDescription")}
           </p>
         </div>
 

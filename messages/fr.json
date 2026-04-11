@@ -1,0 +1,203 @@
+{
+  "home": {
+    "title": "Bienvenue sur GreenSkillHub",
+    "description": "Apprenez des compétences durables pour un avenir plus vert"
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "howItWorks": "Comment ça marche",
+    "skills": "Compétences vertes",
+    "impact": "Impact",
+    "faq": "FAQ",
+    "signIn": "Se connecter",
+    "getStarted": "Commencer gratuitement"
+  },
+  "hero": {
+    "ai-powered": "Plateforme de compétences vertes alimentée par l'IA",
+    "main-sub01": "Transformez les compétences vertes en",
+    "main-sub02": "moyens de subsistance durables",
+    "heroDesc": "Plateforme alimentée par l'IA aidant les jeunes camerounais à découvrir des compétences intelligentes pour le climat, à apprendre des techniques pratiques et à lancer des entreprises vertes.",
+    "heroPoint1": "Recommandations de compétences personnalisées par l'IA",
+    "heroPoint2": "Modules d'apprentissage pratiques étape par étape",
+    "heroPoint3": "Planification d'entreprise verte guidée par l'IA",
+    "heroPoint4": "Suivi de votre impact environnemental",
+    "startLearning": "Commencez à apprendre maintenant",
+    "seeHowItWorks": "Découvrez comment ça marche",
+    "freeToStart": "Gratuit pour commencer",
+    "welcomeBack": "Bon retour,",
+    "readyToBuildSkills": "Prêt à développer vos compétences vertes aujourd'hui ?",
+    "basedOnYourLocation": "Basé sur votre emplacement à Douala, je recommande &quot;Recyclage des déchets plastiques&quot; — forte demande et faible coût de démarrage !",
+    "50kgWasteReduced": "50 kg de déchets réduits",
+    "buildForCameroon": "Conçu pour le Cameroun",
+    "greenAiAdvisor": "Conseiller IA vert"
+  },
+  "features": {
+    "heading": "Fonctionnalités de la plateforme",
+    "subheading": "Tout ce dont vous avez besoin pour",
+    "subheadingHighlight": "Devenir vert",
+    "fromDescription": "De la découverte des compétences au lancement des entreprises, GreenSkillHub fournit les outils dont les jeunes camerounais ont besoin pour construire des moyens de subsistance résilients au climat.",
+
+    "title01": "Renforcer les compétences vertes pour un avenir durable",
+    "description01": "Découvrez comment la plateforme alimentée par l'IA de GreenSkillHub transforme l'éducation climatique et permet aux jeunes camerounais de construire des moyens de subsistance durables.",
+    "sub01": "Alimenté par le conseiller IA vert",
+    
+    "title02": "Parcours de micro-apprentissage.",
+    "description02": "Des modules pratiques, étape par étape, que vous pouvez terminer en 5 à 10 minutes. Inclut des quiz et des exercices pratiques.",
+    "sub02": "Apprenez à votre propre rythme.",
+
+    "title03": "Planificateur d’entreprise verte.",
+    "description03": "L’IA vous guide dans la création d’un plan d’affaires complet — de la définition du problème aux projections de revenus en XAF.",
+    "sub03": "Exporter en PDF professionnel.",
+
+    "title04": "Suivi d’impact.",
+    "description04": "Enregistrez vos activités environnementales et visualisez votre impact. Suivez les déchets réduits, les arbres plantés et les revenus générés.",
+    "sub04": "Des données réelles, un impact réel.",
+
+    "title05": "Communauté & Classement",
+    "description05": "Connectez-vous avec d’autres acteurs écologiques, partagez des conseils, posez des questions et progressez dans le classement d’impact de votre région.",
+    "sub05": "Gagnez des badges et des points",
+
+    "title06": "Adapté au Cameroun.",
+    "description06": "Contenu, tarification et recommandations adaptés aux 10 régions du Cameroun, aux zones climatiques et aux conditions du marché local.",
+    "sub06": "Support en anglais et en français."
+  },
+    
+  "howItWorks": {
+    "howItWorks": "Comment ça marche",
+    "fourSimpleSteps": "Quatre étapes simples pour passer des compétences aux revenus",
+
+    "stepTitle01": "Créez votre profil",
+    "stepDesc01": "Inscrivez-vous gratuitement et indiquez votre localisation, vos intérêts et vos ressources disponibles. Cela prend moins de 2 minutes.",
+
+    "stepTitle02": "Obtenez des recommandations IA",
+    "stepDesc02": "Notre IA analyse votre profil et les conditions climatiques locales pour vous suggérer les compétences vertes les plus pertinentes.",
+
+    "stepTitle03": "Apprenez et pratiquez",
+    "stepDesc03": "Suivez des parcours pratiques avec des exercices concrets. Complétez des quiz et obtenez des certificats.",
+
+    "stepTitle04": "Lancez votre entreprise verte",
+    "stepDesc04": "Utilisez le planificateur d’entreprise IA pour transformer vos compétences en revenus. Suivez votre impact environnemental au fur et à mesure de votre croissance.",
+
+    "step": "Étape"
+  },
+
+  "SkillsPreview": {
+    "explore": "Explorer",
+    "greenSkills": "Compétences vertes",
+    "discoverIncomeGen": "Découvrez des compétences génératrices de revenus qui protègent aussi l’environnement. Toutes adaptées à l’économie et au climat du Cameroun.",
+    "discoverYourIdealSkills": "Découvrez vos compétences idéales",
+
+    "skillTitle01": "Agriculture durable",
+    "skillPoint011": "Compostage et engrais organiques",
+    "skillPoint012": "Agriculture intelligente face au climat",
+    "skillPoint013": "Irrigation goutte à goutte",
+    "skillPoint014": "Agriculture urbaine",
+    "skillPoint015": "Agroforesterie",
+
+    "skillTitle02": "Gestion des déchets",
+    "skillPoint021": "Recyclage et valorisation du plastique",
+    "skillPoint022": "Collecte communautaire des déchets",
+    "skillPoint023": "Production de biogaz",
+
+    "skillTitle03": "Énergie renouvelable",
+    "skillPoint031": "Installation de panneaux solaires",
+    "skillPoint032": "Production de foyers améliorés",
+    "skillPoint033": "Briquettes de biomasse",
+
+    "skillTitle04": "Conservation de l’eau",
+    "skillPoint041": "Collecte des eaux de pluie",
+    "skillPoint042": "Purification de l’eau"
+  },
+
+  "ImpactSection": {
+    "withGreenSkillUp": "Suivez votre impact réel",
+    "everyActionCounts": "Chaque action compte. GreenSkill Up vous aide à mesurer et visualiser l’impact environnemental que vous créez.",
+    "joinGreenCommunity": "Rejoignez la communauté verte",
+    "connectWithOthers": "Connectez-vous avec d’autres jeunes Camerounais développant des compétences vertes. Partagez des conseils, collaborez sur des projets et progressez dans le classement d’impact de votre région. Ensemble, nous construisons un avenir résilient face au climat.",
+    "regions": "Régions",
+    "greenSkills": "Compétences vertes",
+    "impactAreas": "Domaines d’impact",
+
+    "wasteReduce": "Déchets réduits",
+    "treesPlanted": "Arbres plantés",
+    "energySaved": "Énergie économisée",
+    "waterConserved": "Eau conservée",
+    "seedlingsTracked": "Plants suivis",
+    "kgTracked": "Kg suivis",
+    "kWhTracked": "kWh suivis",
+    "litersTracked": "Litres suivis"
+  },
+
+  "TestimonialsSection": {
+    "whatYouths": "Ce que disent les jeunes",
+    "realStories": "Des histoires réelles de jeunes Camerounais construisant des moyens de subsistance durables avec GreenSkillUp.",
+
+    "testiRole01": "Entrepreneur en compostage, Douala",
+    "testiQuote01": "GreenSkill Up m’a aidé à transformer les déchets de cuisine en revenus. L’IA m’a recommandé le compostage selon ma localisation, et le planificateur d’entreprise m’a aidé à fixer mes prix. Je gagne maintenant 80 000 XAF par mois !",
+
+    "testiRole02": "Technicien solaire, Yaoundé",
+    "testiQuote02": "Les modules d’apprentissage sont très pratiques. J’ai terminé le parcours d’installation solaire et obtenu mon premier client en un mois. L’approche étape par étape rend tout très clair.",
+
+    "testiRole03": "Recyclage des déchets, Bamenda",
+    "testiQuote03": "J’adore la façon dont la plateforme suit mon impact environnemental. Voir que j’ai recyclé 200 kg de plastique ce mois-ci me motive à continuer. La communauté est aussi très solidaire !"
+  },
+
+  "FAQSection": {
+    "frequentlyAsked": "Questions fréquentes",
+    "everythingYou": "Tout ce que vous devez savoir sur GreenSkill Up",
+
+    "quest01": "GreenSkill Up est-il vraiment gratuit ?",
+    "ans01": "Oui ! La création de compte, les recommandations de compétences par IA, l’accès aux modules d’apprentissage et l’utilisation du planificateur d’entreprise sont entièrement gratuits. Nous pensons que chaque jeune doit avoir accès à une formation en compétences vertes, quelle que soit sa situation financière.",
+
+    "quest02": "À qui s’adresse GreenSkill Up ?",
+    "ans02": "GreenSkill Up est conçu pour les jeunes Camerounais âgés de 18 à 35 ans, y compris les étudiants, les jeunes sans emploi ou sous-employés, et les entrepreneurs verts en devenir. Que vous soyez à Douala, Yaoundé, Bamenda ou dans un village, la plateforme s’adapte à votre contexte local.",
+
+    "quest03": "Comment fonctionne le conseiller de compétences IA ?",
+    "ans03": "Notre IA (alimentée par Google Gemini) analyse votre localisation, votre zone climatique, vos intérêts et vos ressources disponibles pour recommander les compétences vertes les plus pertinentes. Par exemple, dans l’Extrême-Nord, elle peut recommander l’irrigation goutte à goutte ou le solaire. À Douala, elle peut suggérer le recyclage ou l’agriculture urbaine.",
+
+    "quest04": "Quelles compétences vertes puis-je apprendre ?",
+    "ans04": "Nous couvrons quatre grandes catégories : agriculture durable (compostage, agroforesterie, agriculture intelligente), gestion des déchets (recyclage, biogaz), énergie renouvelable (solaire, foyers améliorés, briquettes) et conservation de l’eau (collecte des eaux de pluie, purification). Chaque compétence inclut des modules pratiques.",
+
+    "quest05": "Puis-je vraiment créer une entreprise avec ces compétences ?",
+    "ans05": "Absolument ! Chaque compétence a un réel potentiel de marché au Cameroun. Notre planificateur d’entreprise IA vous aide à créer un plan complet avec des coûts de démarrage réalistes (en XAF), des projections de revenus et des étapes de lancement. Beaucoup d’activités peuvent démarrer avec moins de 50 000 XAF.",
+
+    "quest06": "Quelles langues la plateforme prend-elle en charge ?",
+    "ans06": "GreenSkill Up prend en charge l’anglais et le français, les deux langues officielles du Cameroun. Vous pouvez choisir votre langue préférée lors de l’inscription.",
+
+    "quest07": "Ai-je besoin d’un ordinateur pour utiliser GreenSkill Up ?",
+    "ans07": "Non ! GreenSkill Up est conçu d’abord pour le mobile, et fonctionne parfaitement sur smartphone. Une connexion internet basique suffit. Les modules sont courts (5 à 10 minutes) pour économiser les données mobiles.",
+
+    "quest08": "Comment fonctionnent les points et les badges ?",
+    "ans08": "Vous gagnez des points en complétant des modules (+20), en enregistrant des activités d’impact (+10), en créant des plans d’entreprise (+50) et en participant à la communauté. Les badges sont attribués pour des étapes clés comme terminer un parcours, recycler 100 kg de déchets ou planter 50 arbres. Les points déterminent votre position dans le classement."
+  },
+
+  "CTASection": {
+    "readyToBuild": "Prêt à construire votre",
+    "greenFuture": "avenir vert",
+    "joinHundreds": "Rejoignez des centaines de jeunes Camerounais qui transforment des compétences vertes en moyens de subsistance durables. C’est gratuit, alimenté par l’IA et conçu pour vous.",
+    "getStarted": "Commencer — C’est gratuit",
+    "noCreditCard": "Aucune carte de crédit requise · Fonctionne sur mobile · Anglais & Français"
+  },
+
+  "Footer": {
+    "AIPoweredPlatform": "Une plateforme alimentée par l’IA qui permet aux jeunes Camerounais de découvrir des compétences vertes, de créer des moyens de subsistance durables et de contribuer à la résilience climatique.",
+    "madeWithLove": "Fait avec ❤️ pour le Cameroun",
+
+    "features": "Fonctionnalités",
+    "greenSkills": "Compétences vertes",
+    "howItWorks": "Comment ça marche",
+    "faq": "FAQ",
+
+    "learningPathways": "Parcours d’apprentissage",
+    "businessPlanner": "Planificateur d’entreprise",
+    "impactTracker": "Suivi d’impact",
+    "community": "Communauté",
+
+    "ourMission": "Notre mission",
+    "greenChallenge": "Défi de l’économie verte",
+    "contactUs": "Contactez-nous",
+    "privacyPolicy": "Politique de confidentialité",
+
+    "allRights": "GreenSkill Up. Tous droits réservés."
+  }
+}

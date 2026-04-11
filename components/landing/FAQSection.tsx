@@ -4,51 +4,53 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronDown, HelpCircle } from "lucide-react";
-
-const FAQS = [
-  {
-    question: "Is GreenSkill Up really free?",
-    answer:
-      "Yes! Creating an account, getting AI skill recommendations, accessing learning modules, and using the business planner are all completely free. We believe every young person should have access to green skills training regardless of their financial situation.",
-  },
-  {
-    question: "Who is GreenSkill Up for?",
-    answer:
-      "GreenSkill Up is designed for Cameroonian youths aged 18-35, including students, unemployed or underemployed youth, and aspiring green entrepreneurs. Whether you're in Douala, Yaoundé, Bamenda, or any other city or village, the platform adapts to your local context.",
-  },
-  {
-    question: "How does the AI Skill Advisor work?",
-    answer:
-      "Our AI (powered by Google Gemini) analyzes your location, climate zone, interests, and available resources to recommend the most relevant green skills. For example, if you're in the Far North region, it might recommend drip irrigation or solar installation. If you're in Douala, it might suggest waste recycling or urban farming.",
-  },
-  {
-    question: "What kind of green skills can I learn?",
-    answer:
-      "We cover four main categories: Sustainable Agriculture (composting, agroforestry, smart farming), Waste Management (plastic recycling, biogas), Renewable Energy (solar installation, cookstoves, briquettes), and Water Conservation (rainwater harvesting, purification). Each skill includes practical, hands-on learning modules.",
-  },
-  {
-    question: "Can I really start a business from these skills?",
-    answer:
-      "Absolutely! Every skill on the platform has real market potential in Cameroon. Our AI Business Planner helps you create a complete business plan with realistic startup costs (in XAF), revenue projections, and step-by-step launch instructions. Many skills can be started with less than 50,000 XAF.",
-  },
-  {
-    question: "What languages does the platform support?",
-    answer:
-      "GreenSkill Up supports both English and French, Cameroon's two official languages. You can set your preferred language during onboarding.",
-  },
-  {
-    question: "Do I need a computer to use GreenSkill Up?",
-    answer:
-      "No! GreenSkill Up is designed mobile-first, meaning it works perfectly on smartphones. You just need a basic internet connection to access the platform. Learning modules are kept short (5-10 minutes) to be friendly on mobile data.",
-  },
-  {
-    question: "How do points and badges work?",
-    answer:
-      "You earn points by completing learning modules (+20), logging impact activities (+10), creating business plans (+50), and participating in the community. Badges are awarded for milestones like completing your first pathway, logging 100kg of waste, or planting 50 trees. Points contribute to your position on the leaderboard.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function FAQSection() {
+  const t = useTranslations("FAQSection")
+
+  const FAQS = [
+  {
+    question: t("quest01"),
+    answer:
+      t("ans01"),
+  },
+  {
+    question: t("quest02"),
+    answer:
+      t("ans02"),
+  },
+  {
+    question: t("quest03"),
+    answer:
+      t("ans03"),
+  },
+  {
+    question: t("quest04"),
+    answer:
+      t("ans04"),
+  },
+  {
+    question: t("quest05"),
+    answer:
+      t("ans05"),
+  },
+  {
+    question: t("quest06"),
+    answer:
+      t("ans06"),
+  },
+  {
+    question: t("quest07"),
+    answer:
+      t("ans07"),
+  },
+  {
+    question: t("quest08"),
+    answer:
+      t("ans08"),
+  },
+];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -56,10 +58,10 @@ export function FAQSection() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            Frequently Asked Questions
+            {t("frequentlyAsked")}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Everything you need to know about GreenSkill Up
+            {t("everythingYou")}
           </p>
         </div>
 

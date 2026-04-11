@@ -1,22 +1,17 @@
-// src/components/landing/LandingNav.tsx
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation"; // ✅ IMPORTANT (NOT next/link)
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { Leaf, Menu, X } from "lucide-react";
-
-const NAV_LINKS = [
-  { href: "#features", label: "Features" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#skills", label: "Green Skills" },
-  { href: "#impact", label: "Impact" },
-  { href: "#faq", label: "FAQ" },
-];
+import { Leaf, Menu } from "lucide-react";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslations } from "next-intl";
 
 export function LandingNav() {
+  const t = useTranslations("nav"); // ✅ hook
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -25,6 +20,15 @@ export function LandingNav() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // ✅ Translated links
+  const NAV_LINKS = [
+    { href: "#features", label: t("features") },
+    { href: "#how-it-works", label: t("howItWorks") },
+    { href: "#skills", label: t("skills") },
+    { href: "#impact", label: t("impact") },
+    { href: "#faq", label: t("faq") },
+  ];
 
   return (
     <header
@@ -37,28 +41,24 @@ export function LandingNav() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
+
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
             <div
               className={cn(
-                "w-9 h-9 rounded-xl flex items-center justify-center transition-colors",
+                "w-9 h-9 rounded-xl flex items-center justify-center",
                 scrolled ? "bg-green-800" : "bg-white/20 backdrop-blur-sm"
               )}
             >
-              <Leaf
-                className={cn(
-                  "w-5 h-5",
-                  scrolled ? "text-white" : "text-white"
-                )}
-              />
+              <Leaf className="w-5 h-5 text-white" />
             </div>
             <span
               className={cn(
-                "text-lg font-heading font-bold transition-colors",
+                "text-lg font-heading font-bold",
                 scrolled ? "text-green-800" : "text-white"
               )}
             >
-             GreenSkill Up
+              GreenSkill Up
             </span>
           </Link>
 
@@ -92,48 +92,56 @@ export function LandingNav() {
                     : "text-white hover:bg-white/10"
                 )}
               >
-                Sign In
+                {t("signIn")}
               </Button>
             </Link>
+
             <Link href="/sign-up">
-              <Button 
-              // className="bg-gold-500 hover:bg-gold-600 text-green-900 font-bold text-sm px-5"
+              <Button
                 variant="ghost"
                 className={cn(
-                    "text-sm font-bold bg-gold-500 cursol-pionter",
-                    scrolled
-                      ? "text-green-900 hover:text-green-800"
-                      : "text-white hover:bg-white/10"
-                  )}
+                  "text-sm font-bold bg-gold-500",
+                  scrolled
+                    ? "text-green-900 hover:text-green-800"
+                    : "text-white hover:bg-white/10"
+                )}
               >
-                Get Started Free
+                {t("getStarted")}
               </Button>
             </Link>
+
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "md:hidden",
-                  scrolled ? "text-gray-700" : "text-white"
-                )}
-              >
-                <Menu className="w-6 h-6" />
-              </Button>
-            </SheetTrigger>
+            <div className="flex items-center gap-2">
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "md:hidden",
+                    scrolled ? "text-gray-700" : "text-white"
+                  )}
+                >
+                  <Menu className="w-6 h-6" />
+                </Button>
+              </SheetTrigger>
+              <LanguageSwitcher />
+            </div>
+            
+
             <SheetContent side="right" className="w-72 bg-white p-0">
-              <div className="flex items-center gap-2.5 px-6 py-5 border-b border-gray-100">
+              <div className="flex items-center gap-2.5 px-6 py-5 border-b">
                 <div className="w-9 h-9 bg-green-800 rounded-xl flex items-center justify-center">
                   <Leaf className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-lg font-heading font-bold text-green-800">
-                  GreenSkill Up
+                <span className="text-lg font-bold text-green-800">
+                  Up
                 </span>
               </div>
+
               <nav className="px-4 py-4 space-y-1">
                 {NAV_LINKS.map((link) => (
                   <a
@@ -146,17 +154,23 @@ export function LandingNav() {
                   </a>
                 ))}
               </nav>
-              <div className="px-4 py-4 border-t border-gray-100 space-y-2">
+
+              <div className="px-4 py-4 border-t space-y-2">
                 <Link href="/sign-in" onClick={() => setMobileOpen(false)}>
                   <Button variant="outline" className="w-full">
-                    Sign In
+                    {t("signIn")}
                   </Button>
                 </Link>
+
                 <Link href="/sign-up" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full bg-gold-500 hover:bg-gold-600 text-green-900 font-bold">
-                    Get Started Free
+                  <Button className="w-full bg-gold-500 text-green-900 font-bold">
+                    {t("getStarted")}
                   </Button>
                 </Link>
+
+                <div className="pt-2">
+                  <LanguageSwitcher />
+                </div>
               </div>
             </SheetContent>
           </Sheet>

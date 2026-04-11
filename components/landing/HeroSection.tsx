@@ -1,6 +1,8 @@
 // src/components/landing/HeroSection.tsx
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   Sparkles,
@@ -13,6 +15,8 @@ import {
 } from "lucide-react";
 
 export function HeroSection() {
+    const t = useTranslations("hero"); // ✅ hook
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
        {/* Background Glow */}
@@ -39,27 +43,26 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <Sparkles className="w-4 h-4 text-gold-400" />
               <span className="text-sm text-white/90 font-medium">
-                AI-Powered Green Skills Platform
+              {t("ai-powered")}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight">
-              Turn Green Skills Into{" "}
-              <span className="text-gold-400">Sustainable Livelihoods</span>
+              {t("main-sub01")}{" "}
+              <span className="text-gold-400">{t("main-sub02")}</span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-green-100 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              AI-powered platform helping Cameroonian youths discover climate-smart
-              skills, learn practical techniques, and launch green businesses.
+              {t("heroDesc")}
             </p>
 
             {/* Checklist */}
             <div className="mt-8 space-y-3 max-w-md mx-auto lg:mx-0">
               {[
-                "Personalized AI skill recommendations",
-                "Step-by-step practical learning modules",
-                "AI-guided green business planning",
-                "Track your environmental impact",
+                t("heroPoint1"),
+                t("heroPoint2"),
+                t("heroPoint3"),
+                t("heroPoint4"),
               ].map((item, i) => (
                 <div
                   key={i}
@@ -78,7 +81,7 @@ export function HeroSection() {
                   size="lg"
                   className="bg-gold-500 hover:bg-gold-600 text-green-300 cursor-pointer hover:bg-white/10 font-bold text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-gold-500/30"
                 >
-                  Start Learning Free
+                  {t("startLearning")}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -88,7 +91,7 @@ export function HeroSection() {
                   variant="outline"
                   className="border-white/30 text-green-800 cursor-pointer hover:bg-white/10 text-base px-8 py-6 h-auto rounded-xl"
                 >
-                  See How It Works
+                  {t("seeHowItWorks")}
                 </Button>
               </a>
             </div>
@@ -97,17 +100,17 @@ export function HeroSection() {
             <div className="mt-10 flex items-center gap-6 justify-center lg:justify-start text-green-200 text-sm">
               <div className="flex items-center gap-1.5">
                 <span className="text-lg font-bold text-white">100%</span>
-                <span>Free to start</span>
+                <span>{t("freeToStart")}</span>
               </div>
               <div className="w-px h-5 bg-green-600" />
               <div className="flex items-center gap-1.5">
                 <span className="text-lg font-bold text-white">🇨🇲</span>
-                <span>Built for Cameroon</span>
+                <span>{t("buildForCameroon")}</span>
               </div>
               <div className="w-px h-5 bg-green-600 hidden sm:block" />
               <div className="hidden sm:flex items-center gap-1.5">
                 <span className="text-lg font-bold text-white">🤖</span>
-                <span>Gemini AI</span>
+                <span>{t("greenAiAdvisor")}</span>
               </div>
             </div>
           </div>
@@ -130,10 +133,10 @@ export function HeroSection() {
                 <div className="p-4 space-y-3">
                   {/* Welcome */}
                   <div className="bg-gradient-to-r from-green-800 to-green-600 rounded-xl p-4 text-white">
-                    <p className="text-xs text-green-200">Welcome back,</p>
+                    <p className="text-xs text-green-200">{t('welcomeBack')}</p>
                     <p className="font-bold">Amina! 🌱</p>
                     <p className="text-xs text-green-200 mt-1">
-                      Ready to build your green skills today
+                      {t("readyToBuildSkills")}
                     </p>
                   </div>
 
@@ -164,9 +167,7 @@ export function HeroSection() {
                       🤖 AI Advisor
                     </p>
                     <p className="text-xs text-blue-800 mt-0.5">
-                      Based on your location in Douala, I recommend
-                      &quot;Plastic Waste Recycling&quot; — high demand and low
-                      startup cost!
+                      {t("basedOnYourLocation")}
                     </p>
                   </div>
                 </div>

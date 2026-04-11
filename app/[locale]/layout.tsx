@@ -2,11 +2,12 @@ import { type Metadata } from 'next'
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
-import './globals.css'
+import '../globals.css'
 import Provider from "@/provider";
 import { Toaster } from "react-hot-toast";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { locales } from "@/i18n";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
 const inter = Inter({
@@ -49,21 +50,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode
+  // params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
+    const { locale } = await params;
+  
+    if (!locales.includes(locale)) notFound();
+  
+    const messages = (await import(`../../messages/${locale}.json`)).default;
+
   return (
     <ClerkProvider>
-      <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+      <html lang={locale} className={`${inter.variable} ${jakarta.variable}`}>
         <body className="font-sans antialiased"
         >
           <Provider>
-            <div>
+            <NextIntlClientProvider locale={locale} messages={messages}>
                     {children}
-            </div>
-            <Toaster position="top-right" />
+                    <Toaster position="top-right" />
+            </NextIntlClientProvider>
           </Provider>
         </body>
       </html>

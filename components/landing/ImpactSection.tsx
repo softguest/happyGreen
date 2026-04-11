@@ -1,4 +1,5 @@
 // src/components/landing/ImpactSection.tsx
+"use client";
 import {
   Trash2,
   TreePine,
@@ -7,15 +8,18 @@ import {
   Users,
   Globe,
 } from "lucide-react";
-
-const IMPACT_STATS = [
-  { icon: Trash2, value: "Waste Reduced", unit: "kg tracked", color: "text-amber-600", bg: "bg-amber-100" },
-  { icon: TreePine, value: "Trees Planted", unit: "seedlings tracked", color: "text-green-600", bg: "bg-green-100" },
-  { icon: Zap, value: "Energy Saved", unit: "kWh tracked", color: "text-yellow-600", bg: "bg-yellow-100" },
-  { icon: Droplets, value: "Water Conserved", unit: "liters tracked", color: "text-blue-600", bg: "bg-blue-100" },
-];
+import { useTranslations } from "next-intl";
 
 export function ImpactSection() {
+  const t = useTranslations("ImpactSection");
+
+  const IMPACT_STATS = [
+    { icon: Trash2, value: t("wasteReduce"), unit: t("kgTracked"), color: "text-amber-600", bg: "bg-amber-100" },
+    { icon: TreePine, value: t("treesPlanted"), unit: t("seedlingsTracked"), color: "text-green-600", bg: "bg-green-100" },
+    { icon: Zap, value: t("energySaved"), unit: t("kWhTracked"), color: "text-yellow-600", bg: "bg-yellow-100" },
+    { icon: Droplets, value: t("waterConserved"), unit: t("litersTracked"), color: "text-blue-600", bg: "bg-blue-100" },
+  ];
+
   return (
     <section id="impact" className="relative min-h-screen flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
       {/* Background Elements */}
@@ -25,11 +29,10 @@ export function ImpactSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
-            Track Your Real-World Impact
+            {t("withGreenSkillUp")}
           </h2>
           <p className="mt-4 text-lg text-green-200">
-            Every action counts. GreenSkill Up helps you measure and visualize
-            the environmental difference you&apos;re making.
+            {t("everyActionCounts")}
           </p>
         </div>
 
@@ -60,10 +63,11 @@ export function ImpactSection() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Globe className="w-6 h-6 text-gold-400" />
             <h3 className="text-xl font-heading font-bold text-white">
-              Join the Green Community
+              {t("joinGreenCommunity")}
             </h3>
           </div>
           <p className="text-green-200 max-w-2xl mx-auto">
+            {t("connectWithOthers")}
             Connect with other young Cameroonians building green skills. Share
             tips, collaborate on projects, and climb the impact leaderboard in
             your region. Together, we&apos;re building a climate-resilient future.
@@ -71,17 +75,17 @@ export function ImpactSection() {
           <div className="flex items-center justify-center gap-8 mt-6">
             <div>
               <p className="text-2xl font-bold text-white">10</p>
-              <p className="text-xs text-green-300">Regions</p>
+              <p className="text-xs text-green-300">{t("regions")}</p>
             </div>
             <div className="w-px h-10 bg-green-600" />
             <div>
               <p className="text-2xl font-bold text-white">13+</p>
-              <p className="text-xs text-green-300">Green Skills</p>
+              <p className="text-xs text-green-300">{t("greenSkills")}</p>
             </div>
             <div className="w-px h-10 bg-green-600" />
             <div>
               <p className="text-2xl font-bold text-white">5</p>
-              <p className="text-xs text-green-300">Impact Areas</p>
+              <p className="text-xs text-green-300">{t("impactAreas")}</p>
             </div>
           </div>
         </div>

@@ -81,7 +81,7 @@ export function SkillAdvisorView({ profile, savedSkills, allSkills }: Props) {
             className="data-[state=active]:bg-green-800 data-[state=active]:text-white text-xs sm:text-sm"
           >
             <Brain className="w-4 h-4 mr-1 sm:mr-2" />
-            <span className="hidden sm:inline">AI</span> Recommend
+            <span className="hidden sm:inline">AI</span>
           </TabsTrigger>
           <TabsTrigger
             value="browse"

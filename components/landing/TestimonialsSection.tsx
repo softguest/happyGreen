@@ -1,44 +1,48 @@
 // src/components/landing/TestimonialsSection.tsx
+"use client"
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const TESTIMONIALS = [
+export function TestimonialsSection() {
+  const t = useTranslations("TestimonialsSection");
+
+  const TESTIMONIALS = [
   {
     name: "Amina Bello",
-    role: "Composting Entrepreneur, Douala",
+    role: t("testiRole01"),
     quote:
-      "GreenSkill Up helped me turn kitchen waste into income. The AI recommended composting based on my location, and the business planner helped me price my products. I now earn 80,000 XAF monthly!",
+      t("testiQuote01"),
     avatar: "AB",
     rating: 5,
   },
   {
     name: "Jean-Pierre Nkomo",
-    role: "Solar Technician, Yaoundé",
+    role: t("testiRole02"),
     quote:
-      "The learning modules are incredibly practical. I completed the solar installation pathway and got my first client within a month. The step-by-step approach made everything so clear.",
+      t("testiQuote02"),
     avatar: "JN",
     rating: 5,
   },
   {
     name: "Grace Fongod",
-    role: "Waste Recycling, Bamenda",
+    role: t("testiRole03"),
     quote:
-      "I love how the platform tracks my environmental impact. Seeing that I've recycled 200kg of plastic this month motivates me to keep going. The community is also very supportive!",
+      t("testiQuote03"),
     avatar: "GF",
     rating: 5,
   },
 ];
 
-export function TestimonialsSection() {
   return (
     <section className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            What Youths Are Saying
+            {t("whatYouths")}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Real stories from young Cameroonians building green livelihoods
+            {t("realStories")}
           </p>
         </div>
 

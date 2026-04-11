@@ -1,29 +1,33 @@
 // src/components/landing/Footer.tsx
+"use client";
 import Link from "next/link";
 import { Leaf } from "lucide-react";
-
-const FOOTER_LINKS = {
-  Platform: [
-    { label: "Features", href: "#features" },
-    { label: "Green Skills", href: "#skills" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "FAQ", href: "#faq" },
-  ],
-  Resources: [
-    { label: "Learning Pathways", href: "/sign-up" },
-    { label: "Business Planner", href: "/sign-up" },
-    { label: "Impact Tracker", href: "/sign-up" },
-    { label: "Community", href: "/sign-up" },
-  ],
-  About: [
-    { label: "Our Mission", href: "#" },
-    { label: "Pachipanda Challenge", href: "#" },
-    { label: "Contact Us", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-  ],
-};
+import { useTranslations } from "next-intl";
+// import {useTransitions} from ""
 
 export function Footer() {
+  const t = useTranslations("Footer");
+
+  const FOOTER_LINKS = {
+    Platform: [
+      { label: t("features"), href: "#features" },
+      { label: t("greenSkills"), href: "#skills" },
+      { label: t("howItWorks"), href: "#how-it-works" },
+      { label: t("faq"), href: "#faq" },
+    ],
+    Resources: [
+      { label: t("learningPathways"), href: "/sign-up" },
+      { label: t("businessPlanner"), href: "/sign-up" },
+      { label: t("impactTracker"), href: "/sign-up" },
+      { label: t("community"), href: "/sign-up" },
+    ],
+    About: [
+      { label: t("ourMission"), href: "#" },
+      { label: t("greenChallenge"), href: "#" },
+      { label: t("contactUs"), href: "#" },
+      { label: t("privacyPolicy"), href: "#" },
+    ],
+  };
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,14 +44,12 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              AI-powered platform empowering Cameroonian youths to discover
-              green skills, build sustainable livelihoods, and contribute to
-              climate resilience.
+              {t("AIPoweredPlatform")}
             </p>
             <div className="flex items-center gap-3 mt-6">
               <span className="text-2xl">🇨🇲</span>
               <span className="text-sm text-gray-400">
-                Made with ❤️ for Cameroon
+                {t("madeWithLove")}
               </span>
             </div>
           </div>
@@ -77,7 +79,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} GreenSkill Up. All rights reserved.
+            © {new Date().getFullYear()} {t("allRights")}
           </p>
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <span>Powered by Subjectspot</span>

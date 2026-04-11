@@ -1,9 +1,12 @@
 // src/components/landing/CTASection.tsx
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function CTASection() {
+  const t = useTranslations("CTASection");
   return (
     <section className="py-20 md:py-28 bg-cream relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
@@ -17,13 +20,12 @@ export function CTASection() {
         </div>
 
         <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-900 leading-tight">
-          Ready to Build Your{" "}
-          <span className="text-green-700">Green Future?</span>
+          {t("readyToBuild")}{" "}
+          <span className="text-green-700">{t("greenFuture")}</span>
         </h2>
 
         <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Join hundreds of young Cameroonians who are turning green skills into
-          sustainable livelihoods. It&apos;s free, AI-powered, and designed for you.
+          {t("joinHundreds")}
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -33,14 +35,14 @@ export function CTASection() {
               className="bg-green-800 hover:bg-green-700 cursol-pointer text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
             >
               <Sparkles className="w-5 h-5 mr-2" />
-                Get Started — It&apos;s Free
+              {t("getStarted")}
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
         </div>
 
         <p className="mt-6 text-sm text-gray-500">
-          No credit card required · Works on mobile · English & French
+          {t("noCreditCard")}
         </p>
       </div>
     </section>

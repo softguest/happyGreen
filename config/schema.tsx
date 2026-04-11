@@ -9,6 +9,7 @@ import {
   jsonb,
   real,
   uniqueIndex,
+  decimal 
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
@@ -314,6 +315,65 @@ export const communityEvents = pgTable("community_events", {
   isActive: boolean("is_active").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+// Main table for the AI-generated content
+export const aiGeneratedContent = pgTable('ai_generated_content', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  moduleId: uuid('module_id').notNull().references(() => learningModules.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => userProfiles.id, { onDelete: 'cascade' }), // Clerk user ID is a string
+  
+  topic: text('topic').notNull(),
+  promptUsed: text('prompt_used').notNull(),
+  generatedContent: jsonb('generated_content').notNull(), // Will store structured JSON from Gemini
+  contentType: text('content_type', { enum: ['deep_dive', 'explanation', 'case_study', 'exercise'] }).default('deep_dive'),
+  
+  userContext: jsonb('user_context'), // Store user location, interests, etc. at time of generation
+  tokensUsed: integer('tokens_used'),
+  generationQualityScore: decimal('generation_quality_score', { precision: 3, scale: 2 }), // For user feedback
+  
+  isBookmarked: boolean('is_bookmarked').default(false),
+  helpfulCount: integer('helpful_count').default(0),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Table for interactive chat sessions related to a piece of generated content
+export const aiContentChats = pgTable('ai_content_chats', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  contentId: uuid('content_id').notNull().references(() => aiGeneratedContent.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => userProfiles.id, { onDelete: 'cascade' }),
+  
+  // Array of {role: 'user' | 'assistant', content: string, timestamp: string}
+  messages: jsonb('messages').notNull(),
+  contextSummary: text('context_summary'), // Optional: For summarizing long conversations
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Define relationships for type-safe queries
+export const aiGeneratedContentRelations = relations(aiGeneratedContent, ({ one }) => ({
+  user: one(userProfiles, {
+    fields: [aiGeneratedContent.userId],
+    references: [userProfiles.id],
+  }),
+  module: one(learningModules, {
+    fields: [aiGeneratedContent.moduleId],
+    references: [learningModules.id],
+  }),
+}));
+
+export const aiContentChatsRelations = relations(aiContentChats, ({ one }) => ({
+  user: one(userProfiles, {
+    fields: [aiContentChats.userId],
+    references: [userProfiles.id],
+  }),
+  content: one(aiGeneratedContent, {
+    fields: [aiContentChats.contentId],
+    references: [aiGeneratedContent.id],
+  }),
+}));
 
 // ============================================
 // RELATIONS

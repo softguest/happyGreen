@@ -1,51 +1,53 @@
 // src/components/landing/HowItWorksSection.tsx
+"use client"
 import { UserPlus, Brain, BookOpen, Rocket } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const STEPS = [
+export function HowItWorksSection() {
+  const t = useTranslations("howItWorks"); // ✅ hook
+
+  const STEPS = [
   {
     icon: UserPlus,
     step: "01",
-    title: "Create Your Profile",
-    description:
-      "Sign up for free and tell us about your location, interests, and available resources. Takes less than 2 minutes.",
+    title: t("stepTitle01"),
+    description: t("stepDesc01"),
     color: "bg-blue-600",
   },
   {
     icon: Brain,
     step: "02",
-    title: "Get AI Recommendations",
+    title: t("stepTitle02"),
     description:
-      "Our AI analyzes your profile and local climate conditions to suggest the most relevant green skills for you.",
+      t("stepDesc02"),
     color: "bg-green-600",
   },
   {
     icon: BookOpen,
     step: "03",
-    title: "Learn & Practice",
-    description:
-      "Follow practical micro-learning pathways with hands-on tasks. Complete quizzes and earn certificates.",
+    title: t("stepTitle03"),
+    description: t("stepDesc03"),
     color: "bg-purple-600",
   },
   {
     icon: Rocket,
     step: "04",
-    title: "Launch Your Green Business",
+    title: t("stepTitle04"),
     description:
-      "Use the AI business planner to turn your skills into income. Track your environmental impact as you grow.",
+      t("stepDesc04"),
     color: "bg-yellow-600",
   },
 ];
 
-export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="py-20 md:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            How It Works
+            {t("howItWorks")}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Four simple steps from discovering skills to earning income
+            {t("fourSimpleSteps")}
           </p>
         </div>
 
@@ -68,7 +70,7 @@ export function HowItWorksSection() {
                 </div>
 
                 <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">
-                  Step {step.step}
+                  {t("step")} {step.step}
                 </span>
                 <h3 className="text-lg font-heading font-bold text-gray-900 mt-2">
                   {step.title}

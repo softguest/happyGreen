@@ -1,4 +1,5 @@
 // src/components/landing/SkillsPreview.tsx
+"use client"
 import { Badge } from "@/components/ui/badge";
 import {
   Sprout,
@@ -10,74 +11,76 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
-const SKILL_CATEGORIES = [
+export function SkillsPreview() {
+  const t = useTranslations("SkillsPreview"); // ✅ hook
+
+  const SKILL_CATEGORIES = [
   {
     icon: Sprout,
-    title: "Sustainable Agriculture",
+    title: t("skillTitle01"),
     color: "text-green-700",
     bg: "bg-green-100",
     border: "border-green-200",
     skills: [
-      "Composting & Organic Fertilizer",
-      "Climate-Smart Farming",
-      "Drip Irrigation",
-      "Urban Farming",
-      "Agroforestry",
+      t("skillPoint011"),
+      t("skillPoint012"),
+      t("skillPoint013"),
+      t("skillPoint014"),
+      t("skillPoint015"),
     ],
     income: "15K - 200K XAF/month",
   },
   {
     icon: Recycle,
-    title: "Waste Management",
+    title: t("skillTitle02"),
     color: "text-amber-700",
     bg: "bg-amber-100",
     border: "border-amber-200",
     skills: [
-      "Plastic Recycling & Upcycling",
-      "Community Waste Collection",
-      "Biogas Production",
+      t("skillPoint021"),
+      t("skillPoint022"),
+      t("skillPoint023"),
     ],
     income: "20K - 150K XAF/month",
   },
   {
     icon: Sun,
-    title: "Renewable Energy",
+    title: t("skillTitle03"),
     color: "text-yellow-700",
     bg: "bg-yellow-100",
     border: "border-yellow-200",
     skills: [
-      "Solar Panel Installation",
-      "Efficient Cookstove Production",
-      "Biomass Briquettes",
+      t("skillPoint031"),
+      t("skillPoint032"),
+      t("skillPoint033")
     ],
     income: "30K - 300K XAF/month",
   },
   {
     icon: Droplets,
-    title: "Water Conservation",
+    title: t("skillTitle04"),
     color: "text-blue-700",
     bg: "bg-blue-100",
     border: "border-blue-200",
     skills: [
-      "Rainwater Harvesting",
-      "Water Purification",
+      t("skillPoint041"),
+      t("skillPoint042"),
     ],
     income: "10K - 100K XAF/month",
   },
 ];
 
-export function SkillsPreview() {
   return (
     <section id="skills" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-            Explore <span className="text-green-700">Green Skills</span>
+            {t("explore")} <span className="text-green-700">{t("greenSkills")}</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Discover income-generating skills that also protect the environment.
-            All tailored to Cameroon&apos;s economy and climate.
+            {t("discoverIncomeGen")}
           </p>
         </div>
 
@@ -126,7 +129,7 @@ export function SkillsPreview() {
         <div className="mt-12 text-center">
           <Link href="/sign-up">
             <Button className="bg-green-800 hover:bg-green-700 text-white px-8 py-3 h-auto rounded-xl">
-              Discover Your Ideal Skills
+              {t("discoverYourIdealSkills")}
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </Link>
