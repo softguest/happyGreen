@@ -89,7 +89,7 @@ export function LandingNav() {
               <Button
                 variant="ghost"
                 className={cn(
-                  "text-sm",
+                  "text-sm cursor-pointer",
                   scrolled
                     ? "text-gray-700 hover:text-green-800"
                     : "text-white hover:bg-white/10"
@@ -103,7 +103,7 @@ export function LandingNav() {
               <Button
                 variant="ghost"
                 className={cn(
-                  "text-sm font-bold bg-gold-500",
+                  "text-sm font-bold bg-gold-500 cursor-pointer",
                   scrolled
                     ? "text-green-900 hover:text-green-800"
                     : "text-white hover:bg-white/10"
