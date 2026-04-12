@@ -117,7 +117,7 @@ export default function CustomSignInPage() {
           {/* Divider */}
           <div className="flex items-center gap-2">
             <div className="flex-1 h-px bg-white/20" />
-            <span className="text-gray-300 text-sm">or</span>
+            <span className="text-gray-300 text-sm">{t("or")}</span>
             <div className="flex-1 h-px bg-white/20" />
           </div>
 

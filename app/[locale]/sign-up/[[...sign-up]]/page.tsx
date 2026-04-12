@@ -4,12 +4,13 @@ import { useState } from "react";
 import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Leaf } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function CustomSignUpPage() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   const t = useTranslations("signUp"); // ✅ hook
+  const locale = useLocale();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -147,7 +148,6 @@ export default function CustomSignUpPage() {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-
             <input
               type="email"
               placeholder={t("email")}
@@ -156,7 +156,6 @@ export default function CustomSignUpPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             <input
               type="password"
               placeholder={t("password")}
@@ -165,11 +164,9 @@ export default function CustomSignUpPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
             {error && (
               <p className="text-sm text-red-400">{error}</p>
             )}
-
             <button
               type="submit"
               disabled={loading}
@@ -183,7 +180,7 @@ export default function CustomSignUpPage() {
           <p className="text-sm text-gray-300 text-center">
             {t("alreadyHaveAccount")}{" "}
             <span
-              onClick={() => router.push("/sign-in")}
+              onClick={() => router.push(`/${locale}/sign-in`)}
               className="text-green-300 hover:text-green-200 cursor-pointer"
             >
               {t("signIn")}

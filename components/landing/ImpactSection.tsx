@@ -21,7 +21,7 @@ export function ImpactSection() {
   ];
 
   return (
-    <section id="impact" className="relative min-h-screen flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
+    <section id="impact" className="relative min-h-screen py-24 flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
       {/* Background Elements */}
       <div className="absolute w-[500px] h-[500px] bg-green-500/20 blur-3xl rounded-full top-[-100px] left-[-100px]" />
       <div className="absolute w-[400px] h-[400px] bg-emerald-400/10 blur-3xl rounded-full bottom-[-120px] right-[-120px]" />

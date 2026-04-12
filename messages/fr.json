@@ -206,6 +206,7 @@
     "email": "Email",
     "password": "Mot de passe",
     "signIn": "Se connecter",
+    "or": "ou",
     "dontHaveAccount": "Vous n'avez pas de compte ?",
     "signUp": "S'inscrire",
     "loading": {
