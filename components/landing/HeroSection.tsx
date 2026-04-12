@@ -2,7 +2,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
   Sparkles,
@@ -16,6 +16,7 @@ import {
 
 export function HeroSection() {
     const t = useTranslations("hero"); // ✅ hook
+    const locale = useLocale();
   
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0f2f1f] overflow-hidden">
@@ -76,7 +77,7 @@ export function HeroSection() {
 
             {/* CTAs */}
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <Link href="/sign-up">
+              <Link href={`/${locale}/sign-up`}>
                 <Button
                   size="lg"
                   className="bg-gold-500 hover:bg-gold-600 text-green-300 cursor-pointer hover:bg-white/10 font-bold text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-gold-500/30"

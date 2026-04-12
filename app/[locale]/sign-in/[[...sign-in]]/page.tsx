@@ -4,10 +4,13 @@ import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Leaf } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function CustomSignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const router = useRouter();
+  const t = useTranslations("signIn");
+  const locale = useLocale()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,10 +79,10 @@ export default function CustomSignInPage() {
           </div>
 
           <h1 className="text-2xl font-bold text-white">
-            Welcome Back
+            {t("welcomeBack")}
           </h1>
           <p className="text-sm text-gray-300 mt-1">
-            Sign in to continue your journey
+            {t("dontHaveAccount")}
           </p>
         </div>
 
@@ -106,8 +109,7 @@ export default function CustomSignInPage() {
                   <path fill="#FBBC05" d="M10.6 28.52A14.5 14.5 0 019.5 24c0-1.56.26-3.06.72-4.48l-8.04-6.24A23.94 23.94 0 000 24c0 3.8.9 7.38 2.48 10.52l8.12-6z"/>
                   <path fill="#34A853" d="M24 48c6.48 0 11.92-2.14 15.9-5.82l-7.16-5.56c-2 1.34-4.56 2.14-8.74 2.14-6.08 0-11.36-3.78-13.4-9.02l-8.12 6C6.44 42.6 14.64 48 24 48z"/>
                 </svg>
-
-                Continue with Google
+                {t("continueWithGoogle")}
               </>
             )}
           </button>
@@ -123,7 +125,7 @@ export default function CustomSignInPage() {
           <form onSubmit={handleSignIn} className="space-y-4">
 
             <div>
-              <label className="text-sm text-gray-200">Email</label>
+              <label className="text-sm text-gray-200">{t("email")}</label>
               <input
                 type="email"
                 required
@@ -134,7 +136,7 @@ export default function CustomSignInPage() {
             </div>
 
             <div>
-              <label className="text-sm text-gray-200">Password</label>
+              <label className="text-sm text-gray-200">{t("password")}</label>
               <input
                 type="password"
                 required
@@ -153,18 +155,19 @@ export default function CustomSignInPage() {
               disabled={loading}
               className="w-full py-2 rounded-xl bg-green-700 text-white font-semibold transition-all duration-300 hover:bg-green-600 hover:scale-[1.02] active:scale-[0.97] shadow-lg hover:shadow-green-500/40 disabled:opacity-50"
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? t("loading.signIn") : t("signIn")}
+              {/* {loading ? "Signing in..." : "Sign In"} */}
             </button>
           </form>
 
           {/* Footer */}
           <p className="text-sm text-gray-300 text-center">
-            Don’t have an account?{" "}
+            {t("dontHaveAccount")}{" "}
             <span
-              onClick={() => router.push("/sign-up")}
+              onClick={() => router.push(`/${locale}/sign-up`)}
               className="text-green-300 hover:text-green-200 cursor-pointer"
             >
-              Sign up
+              {t("signUp")}
             </span>
           </p>
         </div>

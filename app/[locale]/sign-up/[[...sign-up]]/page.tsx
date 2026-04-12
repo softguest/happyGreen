@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Leaf } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function CustomSignUpPage() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
+  const t = useTranslations("signUp"); // ✅ hook
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -43,7 +45,7 @@ export default function CustomSignUpPage() {
         router.push("/verify-email");
       }
     } catch (err: any) {
-      setError(err.errors?.[0]?.message || "Something went wrong");
+      setError(err.errors?.[0]?.message || t("somethingWentWrong"));
     } finally {
       setLoading(false);
     }
@@ -62,7 +64,7 @@ export default function CustomSignUpPage() {
         redirectUrlComplete: "/dashboard",
       });
     } catch (err) {
-      setError("Google sign-up failed");
+      setError(t("googleSignInFailed"));
       setGoogleLoading(false);
     }
   };
@@ -83,10 +85,10 @@ export default function CustomSignUpPage() {
           </div>
 
           <h1 className="text-2xl font-bold text-white">
-            Create Account
+            {t("createAccount")}
           </h1>
           <p className="text-sm text-gray-300 mt-1">
-            Start your green journey today
+            {t("startYourGreenJourney")}
           </p>
         </div>
 
@@ -112,7 +114,7 @@ export default function CustomSignUpPage() {
                   <path fill="#FBBC05" d="M10.6 28.52A14.5 14.5 0 019.5 24c0-1.56.26-3.06.72-4.48l-8.04-6.24A23.94 23.94 0 000 24c0 3.8.9 7.38 2.48 10.52l8.12-6z"/>
                   <path fill="#34A853" d="M24 48c6.48 0 11.92-2.14 15.9-5.82l-7.16-5.56c-2 1.34-4.56 2.14-8.74 2.14-6.08 0-11.36-3.78-13.4-9.02l-8.12 6C6.44 42.6 14.64 48 24 48z"/>
                 </svg>
-                Continue with Google
+                {t("continueWithGoogle")}
               </>
             )}
           </button>
@@ -120,7 +122,7 @@ export default function CustomSignUpPage() {
           {/* Divider */}
           <div className="flex items-center gap-2">
             <div className="flex-1 h-px bg-white/20" />
-            <span className="text-gray-300 text-sm">or</span>
+            <span className="text-gray-300 text-sm">{t("or")}</span>
             <div className="flex-1 h-px bg-white/20" />
           </div>
 
@@ -130,7 +132,7 @@ export default function CustomSignUpPage() {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder="First name"
+                placeholder={t("firstName")}
                 required
                 className="w-1/2 px-4 py-2 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-green-500"
                 value={firstName}
@@ -138,7 +140,7 @@ export default function CustomSignUpPage() {
               />
               <input
                 type="text"
-                placeholder="Last name"
+                placeholder={t("lastName")}
                 required
                 className="w-1/2 px-4 py-2 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-green-500"
                 value={lastName}
@@ -148,7 +150,7 @@ export default function CustomSignUpPage() {
 
             <input
               type="email"
-              placeholder="Email"
+              placeholder={t("email")}
               required
               className="w-full px-4 py-2 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-green-500"
               value={email}
@@ -157,7 +159,7 @@ export default function CustomSignUpPage() {
 
             <input
               type="password"
-              placeholder="Password"
+              placeholder={t("password")}
               required
               className="w-full px-4 py-2 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-300 focus:ring-2 focus:ring-green-500"
               value={password}
@@ -173,18 +175,18 @@ export default function CustomSignUpPage() {
               disabled={loading}
               className="w-full py-2 rounded-xl bg-green-700 text-white font-semibold transition-all duration-300 hover:bg-green-600 hover:scale-[1.02] active:scale-[0.97] shadow-lg hover:shadow-green-500/40 disabled:opacity-50"
             >
-              {loading ? "Creating account..." : "Sign Up"}
+              {loading ? t("loading.signUp") : t("signUp")}
             </button>
           </form>
 
           {/* Footer */}
           <p className="text-sm text-gray-300 text-center">
-            Already have an account?{" "}
+            {t("alreadyHaveAccount")}{" "}
             <span
               onClick={() => router.push("/sign-in")}
               className="text-green-300 hover:text-green-200 cursor-pointer"
             >
-              Sign in
+              {t("signIn")}
             </span>
           </p>
         </div>

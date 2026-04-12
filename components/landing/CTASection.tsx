@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export function CTASection() {
   const t = useTranslations("CTASection");
+  const locale = useLocale();
   return (
     <section className="py-20 md:py-28 bg-cream relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
@@ -29,10 +31,10 @@ export function CTASection() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/sign-up">
+          <Link href={`/${locale}/sign-up`}>
             <Button
               size="lg"
-              className="bg-green-800 hover:bg-green-700 cursol-pointer text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
+              className="bg-green-800 hover:bg-green-700 cursor-pointer text-white font-bold text-lg px-10 py-7 h-auto rounded-xl shadow-lg shadow-green-800/30"
             >
               <Sparkles className="w-5 h-5 mr-2" />
               {t("getStarted")}

@@ -198,5 +198,49 @@
     "privacyPolicy": "Privacy Policy",
 
     "allRights": "GreenSkill Up. All rights reserved."
+  },
+  "signIn": {
+    "welcomeBack": "Welcome back to GreenSkill Up!",
+    "continueWithGoogle": "Continue with Google",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "or": "or",
+    "dontHaveAccount": "Don't have an account?",
+    "googleSignInFailed": "Google sign-in failed. Please try again.",
+    "signUp": "Sign Up",
+    "loading": {
+      "signIn": "Signing in...",
+      "loading": "Loading...",
+      "google": "Connecting with Google..."
+    },
+     "errors": {
+      "generic": "An error occurred during sign-in. Please try again.",
+      "invalidCredentials": "Invalid email or password. Please check your credentials and try again."
+    }
+  },
+  "signUp": {
+    "createAccount": "Create Your GreenSkillUp Account",
+    "startYourGreenJourney": "Start your green journey today",
+    "somethingWentWrong": "Something went wrong. Please try again.",
+    "continueWithGoogle": "Continue with Google",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "signUp": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "or": "or",
+    "signIn": "Sign In",
+    "loading": {
+      "signUp": "Creating account...",
+      "loading": "Loading...",
+      "google": "Connecting with Google..."
+    },
+     "errors": {
+      "generic": "An error occurred during sign-up. Please try again.",
+      "emailInUse": "This email is already in use. Please use a different email or sign in."
+    }
   }
 }

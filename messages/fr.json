@@ -199,5 +199,48 @@
     "privacyPolicy": "Politique de confidentialité",
 
     "allRights": "GreenSkill Up. Tous droits réservés."
+  },
+  "signIn": {
+    "welcomeBack": "Bon retour sur GreenSkill Up !",
+    "continueWithGoogle": "Continuer avec Google",
+    "email": "Email",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire",
+    "loading": {
+      "signIn": "Connexion en cours...",
+      "loading": "Chargement...",
+      "google": "Connexion avec Google..."
+    },
+    "errors": {
+      "generic": "Une erreur s’est produite lors de la connexion. Veuillez réessayer.",
+      "invalidCredentials": "Email ou mot de passe invalide. Veuillez vérifier vos informations et réessayer."
+    }
+  },
+  "signUp": {
+    "createAccount": "Créez votre compte GreenSkillUp",
+    "startYourGreenJourney": "Commencez votre parcours écologique dès aujourd’hui",
+    "somethingWentWrong": "Une erreur s’est produite. Veuillez réessayer.",
+    "continueWithGoogle": "Continuer avec Google",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "signUp": "S’inscrire",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "or": "ou",
+    "signIn": "Se connecter",
+    "loading": {
+      "signUp": "Création du compte...",
+      "loading": "Chargement...",
+      "google": "Connexion avec Google..."
+    },
+    "errors": {
+      "generic": "Une erreur s’est produite lors de l’inscription. Veuillez réessayer.",
+      "emailInUse": "Cet email est déjà utilisé. Veuillez en utiliser un autre ou vous connecter."
+    }
   }
 }
+
