@@ -8,9 +8,11 @@ import { cn } from "@/lib/utils";
 import { Leaf, Menu } from "lucide-react";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export function LandingNav() {
   const t = useTranslations("nav"); // ✅ hook
+  const locale = useLocale();
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

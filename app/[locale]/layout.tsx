@@ -65,7 +65,12 @@ export default async function RootLayout({
     const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      signInUrl={`/${locale}/sign-in`}
+      signUpUrl={`/${locale}/sign-up`}
+      afterSignInUrl={`/${locale}/dashboard`}
+      afterSignUpUrl={`/${locale}/dashboard`}
+    >
       <html lang={locale} className={`${inter.variable} ${jakarta.variable}`}>
         <body className="font-sans antialiased"
         >

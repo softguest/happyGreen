@@ -11,8 +11,10 @@ const intlMiddleware = createMiddleware({
 // 🔓 Public routes
 const isPublicRoute = createRouteMatcher([
   "/","/en","/fr",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
+  "/en/sign-in(.*)",
+  "/fr/sign-in(.*)",
+  "/en/sign-up(.*)",
+  "/fr/sign-up(.*)",
   "/forgot-password(.*)",
   "/api/webhooks/clerk(.*)",
 ]);
