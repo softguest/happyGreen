@@ -10,7 +10,8 @@
     "impact": "Impact",
     "faq": "FAQ",
     "signIn": "Se connecter",
-    "getStarted": "Commencer gratuitement"
+    "getStarted": "Commencer gratuitement",
+    "signOut": "Se déconnecter"
   },
   "hero": {
     "ai-powered": "Plateforme de compétences vertes alimentée par l'IA",

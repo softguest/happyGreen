@@ -16,7 +16,7 @@ export function DashboardTopBar({ adminName, adminEmail }: Props) {
       <div className="flex items-center gap-3">
         <Badge className="bg-red-100 text-green-700 text-xs">
           <Shield className="w-3 h-3 mr-1" />
-            Dashboard
+            {/* Dashboard */}
         </Badge>
         <div className="hidden sm:block">
           <p className="text-sm font-medium text-gray-800">{adminName}</p>

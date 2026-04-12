@@ -10,7 +10,8 @@
     "impact": "Impact",
     "faq": "FAQ",
     "signIn": "Sign In",
-    "getStarted": "Get Started Free"
+    "getStarted": "Get Started Free",
+    "signOut": "Sign Out"
   },
   "hero": {
     "ai-powered": "AI-Powered Green Skills Platform",
