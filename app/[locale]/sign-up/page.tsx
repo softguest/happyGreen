@@ -30,22 +30,25 @@ export default function CustomSignUpPage() {
     setError("");
 
     try {
-      const result = await signUp.create({
+     const result = await signUp.create({
         firstName,
         lastName,
         emailAddress: email,
         password,
       });
 
-      // ⚠️ Email verification step may be required
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        router.push("/dashboard");
+        router.push(`/${locale}/dashboard`);
       } else {
-        // If verification required
-        router.push("/verify-email");
+        // 👇 THIS IS THE FIX
+        await signUp.prepareEmailAddressVerification({
+          strategy: "email_code",
+        });
+
+        router.push(`/${locale}/verify-email`);
       }
-    } catch (err: any) {
+          } catch (err: any) {
       setError(err.errors?.[0]?.message || t("somethingWentWrong"));
     } finally {
       setLoading(false);
@@ -61,8 +64,8 @@ export default function CustomSignUpPage() {
 
       await signUp.authenticateWithRedirect({
         strategy: "oauth_google",
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: "/dashboard",
+        redirectUrl: `/${locale}/sso-callback`,
+        redirectUrlComplete: `/${locale}/dashboard`,
       });
     } catch (err) {
       setError(t("googleSignInFailed"));
