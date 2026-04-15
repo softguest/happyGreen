@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { DASHBOARD_NAV_ITEMS } from "@/lib/dashboard";
+import { SignOutButton } from "@clerk/nextjs";
+import { useLocale, useTranslations } from "next-intl";
 import {
   LayoutDashboard,
   Users,
@@ -32,6 +34,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function DashboardSidebar() {
   const pathname = usePathname();
+  const t = useTranslations("dashboardSidebar");
+  const locale = useLocale();
 
   return (
     <aside className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-30">
@@ -42,7 +46,7 @@ export function DashboardSidebar() {
             <Shield className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-heading font-bold">Account Panel</h1>
+            <h1 className="text-lg font-heading font-bold">{t("accountPanel")}</h1>
             <p className="text-xs text-gray-400">GreenSkill Up</p>
           </div>
         </div>
@@ -55,7 +59,7 @@ export function DashboardSidebar() {
               className="w-full justify-start text-gray-400 hover:text-white hover:bg-gray-800 text-sm"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to App
+              {t("backToApp")}
             </Button>
           </Link>
         </div>
@@ -81,7 +85,7 @@ export function DashboardSidebar() {
                 )}
               >
                 {Icon && <Icon className="w-5 h-5 flex-shrink-0" />}
-                {item.label}
+                {t(item.label)}
               </Link>
             );
           })}
@@ -89,7 +93,14 @@ export function DashboardSidebar() {
 
         {/* Footer */}
         <div className="px-4 py-4 border-t border-gray-800 text-xs text-gray-500">
-          <p>GreenSkill Up Dashboard</p>
+          <div className="mb-3">
+            <SignOutButton redirectUrl={`/${locale}/sign-up`}>
+              <Button variant="secondary" className="w-full cursor-pointer">
+                {t("signOut")}
+              </Button>
+            </SignOutButton>
+          </div>
+          <p className="text-gray-500 text-center">{t("dashboardTitle")}</p>
         </div>
       </div>
     </aside>

@@ -243,5 +243,25 @@
       "generic": "An error occurred during sign-up. Please try again.",
       "emailInUse": "This email is already in use. Please use a different email or sign in."
     }
-  }
+  },
+    "verifyEmail": {
+      "verifyEmail": "Verify Your Email",
+      "enterCode": "Enter the verification code sent to your email",
+      "verify": "Verify",
+      "verificationFailed": "Verification failed. Please check the code and try again."
+    },
+    "dashboardSidebar": {
+      "accountPanel": "Account Panel",
+      "backToApp": "Back to App",
+      "signOut": "Sign Out",
+      "dashboardTitle": "GreenSkill Up Dashboard",
+
+  
+      "overview": "Overview",
+      "user": "User",
+      "skills": "Skills",
+      "pathways": "Pathways",
+      "businessPlans": "Business Plans",
+      "impactData": "Impact Data"
+    }
 }

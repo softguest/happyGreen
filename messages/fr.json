@@ -243,6 +243,25 @@
       "generic": "Une erreur s’est produite lors de l’inscription. Veuillez réessayer.",
       "emailInUse": "Cet email est déjà utilisé. Veuillez en utiliser un autre ou vous connecter."
     }
+  },
+  "verifyEmail": {
+    "verifyEmail": "Vérifiez votre email",
+    "enterCode": "Entrez le code de vérification envoyé à votre email",
+    "verify": "Vérifier",
+    "verificationFailed": "La vérification a échoué. Veuillez vérifier le code et réessayer."
+  },
+  "dashboardSidebar": {
+    "accountPanel": "Panneau de compte",
+    "backToApp": "Retour à l’application",
+    "signOut": "Se déconnecter",
+    "dashboardTitle": "Tableau de bord GreenSkill Up",
+
+    "overview": "Aperçu",
+    "user": "Utilisateur",
+    "skills": "Compétences",
+    "pathways": "Parcours",
+    "businessPlans": "Plans d'affaires",
+    "impactData": "Données d'impact"
   }
 }
 

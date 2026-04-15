@@ -5,11 +5,13 @@ import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { Leaf } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function VerifyEmailPage() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("verifyEmail");
 
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
@@ -51,10 +53,10 @@ export default function VerifyEmailPage() {
     
                   <div className="flex justify-center">
                     <form onSubmit={handleVerify} className="space-y-4">
-                        <h1 className="text-2xl font-bold text-white">Verify Email</h1>
+                        <h1 className="text-2xl font-bold text-white">{t("verifyEmail")}</h1>
                         <input
                         type="text"
-                        placeholder="Enter code"
+                        placeholder={t("enterCode")}
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
                         className="border p-2 rounded w-full bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -62,7 +64,7 @@ export default function VerifyEmailPage() {
 
                         {error && <p className="text-red-500">{error}</p>}
 
-                        <button className="bg-green-500 text-white py-2 px-6 rounded cursor-pointer" type="submit">Verify</button>
+                        <button className="bg-green-500 text-white py-2 px-6 rounded cursor-pointer" type="submit">{t("verify")}</button>
                     </form>
                     </div>
             </div>
