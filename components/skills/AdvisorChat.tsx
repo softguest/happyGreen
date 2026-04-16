@@ -81,7 +81,7 @@ export function AdvisorChat() {
     ]);
 
     try {
-      const res = await fetch("/api/ai/advisor", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ai/advisor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

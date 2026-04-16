@@ -30,7 +30,7 @@ export function BusinessIdeasModal({ skillName, trigger }: Props) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/ai/business-ideas", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ai/business-ideas`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ skillName }),

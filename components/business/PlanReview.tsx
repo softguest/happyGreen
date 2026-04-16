@@ -36,7 +36,7 @@ export function PlanReview({ plan, skillName }: Props) {
     setReview(null);
 
     try {
-      const response = await fetch("/api/ai/planner", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ai/planner`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
