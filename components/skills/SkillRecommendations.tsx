@@ -90,19 +90,37 @@ export function SkillRecommendations({ profile, savedSkillNames }: Props) {
   setError(null);
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/ai/recommend`, {
+    // const response = await fetch("/api/ai/recommend", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   signal: controller.signal,
+    //   body: JSON.stringify({
+    //     mode: "recommend",
+    //     profile, // ✅ send profile explicitly
+    //   }),
+    // });
+
+    // if (!response.ok) throw new Error("Failed to get recommendations");
+
+    // const data = await response.json(); // ✅ no streaming parsing
+
+    // setRecommendations(data);
+    const response = await fetch("../../api/ai/recommend", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       signal: controller.signal,
       body: JSON.stringify({
         mode: "recommend",
-        profile, // ✅ send profile explicitly
+        profile,
       }),
     });
 
-    if (!response.ok) throw new Error("Failed to get recommendations");
+    const data = await response.json(); // 👈 move this up
 
-    const data = await response.json(); // ✅ no streaming parsing
+    if (!response.ok) {
+      console.error("API Error:", data); // 👈 log real backend error
+      throw new Error(data?.error || "Failed to get recommendations");
+    }
 
     setRecommendations(data);
 
